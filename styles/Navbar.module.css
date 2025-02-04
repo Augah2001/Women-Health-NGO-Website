@@ -1,0 +1,47 @@
+/* styles/Navbar.module.css */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    color: white; /* Text color */
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    color: white; /* Text color */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    color: #00bcd4; /* Cyan accent color */
+  }
+
+  .login-button {
+    background-color: transparent; /* Transparent background */
+    border: 2px solid #d47800; /* Border color matching the theme */
+    color: #00bcd4; /* Text color matching the theme */
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #00bcd4; /* Background color on hover */
+    color: white; /* Text color on hover */
+  }
+  

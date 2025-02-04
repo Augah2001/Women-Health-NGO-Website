@@ -1,0 +1,136 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl      = env("DIRECT_URL")
+
+  
+}
+
+model DrugInfo {
+  id           Int      @id @default(autoincrement())
+  startAge     Int
+  endAge       Int
+  gender       String
+  race         String
+  drugName     String
+  price        Float
+  location     String
+  startDate    DateTime @default(now())
+
+  endDate      DateTime @default(now())
+  usersCount   Int
+  Province     Province @relation(fields: [ProvinceCode], references: [code])
+  ProvinceCode String
+}
+
+model Province {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  code      String     @unique
+  password  String
+  drugInfos DrugInfo[]
+  
+  resetTokenExpires DateTime?
+  resetToken          String?
+
+}
+
+model SuperUser {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+}
+
+// prisma/schema.prisma
+
+
+
+
+// schema.prisma
+model ResearchWithUs {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  startDate    DateTime
+  endDate      DateTime
+  collaborators String[]
+
+  documentUrl     String
+
+  postDate     DateTime @default(now())
+}
+
+
+
+
+model Research {
+  id              Int      @id @default(autoincrement())
+  publicationDate String
+  title           String
+  author          String
+  abstract        String
+  imageUrl        String
+
+  documentUrl    String
+}
+
+model News {
+  id    Int      @id @default(autoincrement())
+  date  DateTime
+  title String
+  body  String
+  imageUrl String
+}
+
+enum Gender {
+  male
+  female
+}
+
+model Picture {
+  id                   Int              @id @default(autoincrement())
+  imageUrl            String
+  PeerOutreach         PeerOutreach?    @relation(fields: [PeerOutreachId], references: [id])
+  PeerOutreachId       Int?
+  date                 DateTime         @default(now())
+  collection           ImageCollection? @relation(fields: [ImageCollectionTitle], references: [title])
+  ImageCollectionTitle String?
+}
+
+model ImageCollection {
+  id       Int       @default(autoincrement())
+  title    String    @id
+  date     DateTime  @default(now())
+  pictures Picture[]
+}
+
+model PeerOutreach {
+  id          Int       @id @default(autoincrement())
+  theme       String
+  location    String
+  images      Picture[]
+  From        DateTime
+  To          DateTime
+  description String
+  body        String
+}
+
+model WorkingPaper {
+  id         Int      @id @default(autoincrement())
+  title      String
+  abstract   String
+  documentUrl String
+
+  
+  date DateTime @default(now())
+}
