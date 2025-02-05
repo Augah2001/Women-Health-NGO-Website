@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import ResearchCard from "./ResearchCard";
 import { Research } from "../utils/types";
 import apiClient from "../utils/apiClient";
-import { itemVariants, itemVariantsLeft } from "../utils/configs";
+import { itemVariants } from "../utils/configs";
 import useDelete from "../hooks/useDelete";
 import WPForm from "./working-paper/WPForm";
 import ResearchForm from "./ResearchForm";
@@ -22,69 +22,64 @@ import { useRouter } from "next/navigation";
 const View = () => {
   const onDelete = useDelete();
   const router = useRouter();
-
   const { data, error, hasMore, loadMore, loading } = useResearch();
   const [research, setResearch] = useState<Research[] | null>(data);
 
   useEffect(() => {
-    const controller = new AbortController();
-
+    // Process research data (e.g., convert image buffer to base64)
     const researchWithProcessedData: any = data?.map((item: any) => {
       let processedItem = { ...item };
-
       if (item.image) {
         const base64Image = Buffer.from(item.image).toString("base64");
         const imageUrl = `data:image/jpeg;base64,${base64Image}`;
         processedItem = { ...processedItem, imageUrl };
         delete processedItem.image;
       }
-
       return processedItem;
     });
     setResearch(researchWithProcessedData);
   }, [data]);
 
   const { selectedItemId, setSelectedItemId } = useFormModal();
-
   const { showModal, setShowModal } = useContext(ModalContext);
-  const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext); 
 
   return (
-    <div className="pb-10 pt-32  bg-[#bde5c5]  px-8 min-h-screen">
+    <div className="pb-10 pt-14 px-8 min-h-screen bg-[#302f2f] rounded-md text-[#E8EDCE]">
+      {/* Modal for adding/editing research */}
+      {showModal && (
+        <div
+          onClick={() => setShowModal(false)}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the form
+            className="bg-white rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
+          >
+            <ResearchForm
+              researchItems={research}
+              setResearchItems={setResearch}
+              id={selectedItemId?.toString()}
+              onClose={() => setShowModal(false)}
+            />
+          </div>
+        </div>
+      )}
+
       <motion.div
         initial="hidden"
         whileInView="visible"
         variants={itemVariants}
         viewport={{ once: true }}
       >
-        {showModal && (
-          <div
-            onClick={() => setShowModal(false)}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          >
-            <div
-              onClick={(e) => e.stopPropagation()} // Prevent click event from closing the modal when clicking inside the form
-              className="bg-white rounded-lg shadow-lg md:max-h-[100vh] xs:max-h-[100vh] xs:top-8 mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto "
-            >
-              {
-                <ResearchForm
-                  researchItems={research}
-                  setResearchItems={setResearch}
-                  id={selectedItemId?.toString()}
-                  onClose={() => setShowModal(false)}
-                />
-              }
-            </div>
-          </div>
-        )}
-        <div className="flex justify-between ">
-          <h2 className="text-4xl border-b-4 pb-3 inline-block border-[#637467] text-[#223525] mb-8">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-4xl border-b-4 pb-3 inline-block border-[#D4AF37] text-[#D4AF37]">
             Research Papers
           </h2>
           {user && (
-            <div className="mx-10 mb-5 pt-2">
+            <div className="mx-10">
               <button
-                className="flex items-center hover:text-[#051608]  px-3 py-2 rounded-md hover:bg-[#deedce]  text-[#051608] bg-[#dfe4da] transition-all duration-300"
+                className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300"
                 onClick={() => {
                   setSelectedItemId(undefined);
                   setShowModal(true);
@@ -96,34 +91,37 @@ const View = () => {
             </div>
           )}
         </div>
+
         {loading && (
           <ChakraProvider>
             <div className="flex justify-center mt-5">
-              <Spinner aria-busy className="text-green-500" />
+              <Spinner aria-busy color="#D4AF37" />
             </div>
           </ChakraProvider>
         )}
-        {research?.length == 0 && loading == false && (
-          <div className="text-[#051608] mt-3">No Research Papers</div>
+
+        {research?.length === 0 && !loading && (
+          <div className="mt-3 text-[#D47800]">No Research Papers</div>
         )}
 
         {error && (
-          <div className="flex space-x-3">
-            <div className="text-[#d5342b] mt-3">Failed to load data</div>
-            <button className="flex items-center hover:text-[#051608]  
-            px-3 py-2 rounded-md hover:bg-opacity-60  
-            text-[#051608] bg-yellow-400 transition-all duration-300"
-            onClick={() =>window.location.reload()}
-            >reload</button>
+          <div className="flex space-x-3 items-center">
+            <div className="mt-3 text-[#D47800]">Failed to load data</div>
+            <button
+              className="flex items-center px-3 py-2 rounded-md bg-[#D47800] text-[#E8EDCE] hover:bg-[#D4AF37] transition-all duration-300"
+              onClick={() => window.location.reload()}
+            >
+              Reload
+            </button>
           </div>
         )}
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10  w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full mt-10">
         {research?.map((research) => (
-          <div
+          <motion.div
             key={research.id}
-            className="shadow-lg transform hover:scale-105 transition-all duration-500 ease-in-out"
+            className="shadow-md rounded-md transform hover:scale-103 transition-all duration-500 ease-in-out"
           >
             <ResearchCard
               setResearch={setResearch}
@@ -135,14 +133,15 @@ const View = () => {
               }}
               research={research}
             />
-          </div>
+          </motion.div>
         ))}
       </div>
+
       {hasMore && !loading && (
         <div className="mt-8 flex justify-center">
           <button
             onClick={loadMore}
-            className="bg-[#deedce] rounded-md text-[#0c3715] px-3 h-10 transform hover:scale-105 hover:bg-[#a4bc8a] transition-all duration-500 ease-in-out"
+            className="bg-[#D4AF37] rounded-md text-[#222222] px-3 h-10 transform hover:scale-105 hover:bg-[#D47800] transition-all duration-500 ease-in-out"
           >
             Load More
           </button>
