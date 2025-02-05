@@ -17,7 +17,7 @@ const Footer = () => {
       {/* Partners Belt (Static) */}
       <div className="max-w-6xl mx-auto px-4 mb-8">
     
-        <div className="flex flex-wrap  gap-6">
+        <div className="flex flex-wrap justify-center items-center  gap-6">
           {/* Render your partner logos here statically.
               For example, if your Belt component already renders a row of logos without movement,
               simply include it here. Otherwise, you can inline your logo images.

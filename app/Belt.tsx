@@ -9,9 +9,9 @@ import CivilProtection from "../public/images.png";
 
 const PartnersBelt = () => {
   return (
-    <div className="bg-[#282828] py-6">
+    <div className="bg-[#282828] py-6 flex justify-center items=center">
   
-      <div className="flex flex-wrap items-center gap-8 px-6">
+      <div className="flex flex-wrap items-center justify-center gap-8 px-6">
         {[
           { src: Ministry, alt: "Ministry of Health Zimbabwe" },
           { src: CivilProtection, alt: "Civil Protection in Zimbabwe" },

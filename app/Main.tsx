@@ -22,40 +22,37 @@ const Main = () => {
       <div className="relative min-h-screen bg-[#222222] text-white">
         {/* Header Section with Image Background Transition */}
         <header className="relative w-full h-[700px]">
-  {/* Image Background */}
-  <div className="absolute inset-0">
-    <Image
-      src={FriendShip}
-      alt="Header Background"
-      // height={600}
-      // width={800}
-      layout="fill"
-      objectFit="cover"
-      className="object-cover"
-    />
-  </div>
+          {/* Image Background */}
+          <div className="absolute inset-0">
+            <Image
+              src={FriendShip}
+              alt="Header Background"
+              layout="fill"
+              objectFit="cover"
+              className="object-cover"
+            />
+          </div>
 
-  {/* Soft Gray Overlay that transitions */}
-  <motion.div
-    initial={{ backgroundColor: "rgba(0,0,0,0)" }}
-    animate={{ backgroundColor: "rgba(69, 69, 69, 0.8)" }}
-    transition={{ duration: 3 }}
-    className="absolute inset-0"
-  />
+          {/* Soft Gray Overlay that transitions */}
+          <motion.div
+            initial={{ backgroundColor: "rgba(0,0,0,0)" }}
+            animate={{ backgroundColor: "rgba(69, 69, 69, 0.8)" }}
+            transition={{ duration: 3 }}
+            className="absolute inset-0"
+          />
 
-  {/* Animated Header Text */}
-  <div className="absolute inset-0 flex items-center justify-center">
-    <motion.h1
-      initial={{ opacity: 0, scale: 0.9, x: -50 }}
-      animate={{ opacity: 1, scale: 1, x: 0 }}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      className="text-[#D4AF37] text-5xl font-extrabold shadow-lg p-4 bg-[#433f3f] bg-opacity-50 rounded text-center"
-    >
-      Sexual Reproductive Rights &amp; Harm Reduction Observatory
-    </motion.h1>
-  </div>
-</header>
-
+          {/* Animated Header Text */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.h1
+              initial={{ opacity: 0, scale: 0.9, x: -50 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="text-[#D4AF37] text-5xl font-extrabold shadow-lg p-4 bg-[#433f3f] bg-opacity-50 rounded text-center"
+            >
+              Sexual Reproductive Rights &amp; Harm Reduction Observatory
+            </motion.h1>
+          </div>
+        </header>
 
         {/* Main Content Section */}
         <Container maxW="container.xl" className="py-20">
@@ -75,7 +72,7 @@ const Main = () => {
                 <h1 className="text-4xl text-[#D4AF37] font-bold mb-4">
                   The National Drug Observatory
                 </h1>
-                <p className="text-md text-gray-200 leading-relaxed">
+                <p className="text-md text-[#e8edce] leading-relaxed">
                   A growing number of people are questioning national and
                   international drug policies that prioritize strict law
                   enforcement and punishment in an attempt to end the manufacture,
@@ -109,7 +106,7 @@ const Main = () => {
                   alt="Logo"
                   width={800}
                   height={600}
-                  className="shadow-lg object-cover rounded"
+                  className="shadow-lg object-cover rounded border-4 border-[#D4AF37]"
                 />
               </motion.div>
             </Box>
