@@ -1,94 +1,153 @@
-'use client'
+"use client";
 import React, { useContext } from "react";
-import arasa_logo from "../public/ARASA-LOGO-2.jpg";
-import alliance_logo from "../public/Logo-Love-Alliance_RGB_masterbrand-1024x453.png";
-import Image from "next/image";
-import Belt from "./Belt";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa6";
-import { ChakraProvider, Show } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import UserContext from "./contexts/UserContext";
 import ProvinceContext from "./contexts/ProvinceContext";
+import Belt from "./Belt"; // This component should render the partner logos statically
 
 const Footer = () => {
+  const { user } = useContext(UserContext);
+  const { province } = useContext(ProvinceContext);
+  const router = useRouter();
 
-  const {user} = useContext(UserContext)
-  const {province} = useContext(ProvinceContext)
-  
-  
-
-  const router = useRouter()
   return (
-    <div className="bg-white py-12">
-      {/* Partners Section */}
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="text-3xl md:text-5xl text-[#09270f] font-semibold mb-6">
-          OUR PARTNERS
-        </h1>
-        
-        <div className="w-full">
+    <footer className="bg-[#282828] text-gray-300 py-6">
+      {/* Partners Belt (Static) */}
+      <div className="max-w-6xl mx-auto px-4 mb-8">
+    
+        <div className="flex flex-wrap  gap-6">
+          {/* Render your partner logos here statically.
+              For example, if your Belt component already renders a row of logos without movement,
+              simply include it here. Otherwise, you can inline your logo images.
+          */}
           <Belt />
         </div>
       </div>
-      <div className="h-[1px] mt-2 w-full bg-gray-300"></div>
-      {/* Address and Contact Section */}
-      <div className="mt-12 md:px-12 px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-6 md:space-y-0">
-        {/* Contact Information */}
-        <div className="text-[#195a26] font-sans space-y-1">
-          <h6>316 Furze Road</h6>
-          <h6>ParkTown, WaterFalls </h6>
-          <h6>Harare</h6>
-          <h6>0777056475</h6>
-        </div>
 
-        
-        {/* Social Media Links */}
-        <div className="flex space-x-6 text-[#09270f]">
-          <a
-            href="https://x.com/CivilDrug"
-            aria-label="Twitter"
-            className="hover:text-blue-500 transition duration-300"
-          >
-            <FaTwitter className="text-2xl" />
-          </a>
-          
-          <a
-            href="https://www.facebook.com/ZIMCLDN/"
-            aria-label="Facebook"
-            className="hover:text-blue-700 transition duration-300"
-          >
-            <FaFacebook className="text-2xl" />
-          </a>
+      {/* Footer Main Content */}
+      <div className="flex justify-center text-center">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* About Section */}
+          <div className="text-center">
+            <h2 className="text-xl text-center text-[#D4AF37] font-bold mb-4">About Us</h2>
+            <p className="text-sm leading-relaxed">
+              Zimbabwe Civil Liberties and Drug Network is dedicated to promoting
+              sexual reproductive rights and harm reduction. Our mission is to
+              empower communities with knowledge and advocate for equitable
+              policies.
+            </p>
+          </div>
+          {/* Navigation Section */}
+          <div>
+            <h2 className="text-xl text-center text-[#D4AF37] font-bold mb-4">Quick Links</h2>
+            <ul className="space-y-2 text-sm text-center">
+              <li
+                className="hover:text-white cursor-pointer"
+                onClick={() => router.push("/")}
+              >
+                Home
+              </li>
+              <li
+                className="hover:text-white cursor-pointer"
+                onClick={() => router.push("/about")}
+              >
+                About
+              </li>
+              <li
+                className="hover:text-white cursor-pointer"
+                onClick={() => router.push("/research")}
+              >
+                Research
+              </li>
+              <li
+                className="hover:text-white cursor-pointer"
+                onClick={() => router.push("/news")}
+              >
+                News
+              </li>
+              <li
+                className="hover:text-white cursor-pointer"
+                onClick={() => router.push("/contact")}
+              >
+                Contact
+              </li>
+            </ul>
+          </div>
+          {/* Contact Section */}
+          <div>
+            <h2 className="text-xl text-center text-[#D4AF37] font-bold mb-4">Contact Us</h2>
+            <address className="not-italic text-center text-sm">
+              316 Furze Road <br />
+              ParkTown, WaterFalls <br />
+              Harare <br />
+              Phone: 0777056475
+            </address>
+            <div className="flex justify-center text-center space-x-4 mt-4">
+              <a
+                href="https://x.com/CivilDrug"
+                aria-label="Twitter"
+                className="hover:text-[#D4AF37] transition duration-300"
+              >
+                <FaTwitter className="text-2xl" />
+              </a>
+              <a
+                href="https://www.facebook.com/ZIMCLDN/"
+                aria-label="Facebook"
+                className="hover:text-[#D4AF37] transition duration-300"
+              >
+                <FaFacebook className="text-2xl" />
+              </a>
+              <a
+                href="#"
+                aria-label="YouTube"
+                className="hover:text-[#D4AF37] transition duration-300"
+              >
+                <FaYoutube className="text-2xl" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Additional Information or Links */}
-      <div className="mt-12 text-center">
-        <p className="text-sm text-gray-500">
-          © 2024 Zimbabwe Civil Liberties and Drug Network. All rights reserved.
-        </p>
-        <p className="text-sm text-gray-500 mt-2">
-          Privacy Policy | Terms of Service
-        </p>
-         { (
-              <ChakraProvider>
-                
-                  {(!user  && !province) && <button
-                  onClick={() => router.push("/login")}
-                    className="hover:bg-white mt-3 hover:text-[#24b94f] border-[1px] ms-8
-                  bg-[#0a2f14] text-yellow-400 border-[#134220]
-                  font-extralight hover:border-yellow-400  px-6 py-2 transition-all duration-200 ease-in"
-                  >
-                    Site Setting
-                  </button>}
-                   
-              </ChakraProvider>
-            )}
+      {/* Bottom Bar */}
+      <div className="mt-8 border-t border-gray-600 pt-4">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-xs">
+            &copy; 2024 Zimbabwe Civil Liberties and Drug Network. All rights
+            reserved.
+          </p>
+          <div className="flex space-x-4">
+            <p className="text-xs cursor-pointer hover:text-white">
+              Privacy Policy
+            </p>
+            <p className="text-xs cursor-pointer hover:text-white">
+              Terms of Service
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="justify-end flex mt-3 px-3 italic ">
-        <p className="text-[#134220]  text-sm "> Website by Brief Technologies</p>
+
+      {/* Optional Site Setting Button */}
+      {(!user && !province) && (
+        <div className="flex justify-center mt-4">
+          <ChakraProvider>
+            <button
+              onClick={() => router.push("/login")}
+              className="px-6 py-2 border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#222222] transition-all duration-200 ease-in rounded"
+            >
+              Site Setting
+            </button>
+          </ChakraProvider>
+        </div>
+      )}
+
+      {/* Footer Credit */}
+      <div className="mt-4 text-center text-xs italic text-[#D4AF37]">
+        Website by Xeudo
       </div>
-    </div>
+    </footer>
   );
 };
 

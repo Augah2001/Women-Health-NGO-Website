@@ -16,12 +16,7 @@ const Services = () => {
 
   return (
     <div className="bg-[#282828] py-16">
-      {/* Section Title */}
-      <div className="flex justify-center">
-        <h1 className="text-4xl text-[#D4AF37] font-semibold tracking-wide">
-          Our Services
-        </h1>
-      </div>
+     
 
       {/* Services Grid */}
       <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-8 mt-10">

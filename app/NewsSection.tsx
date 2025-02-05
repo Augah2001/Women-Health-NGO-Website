@@ -1,34 +1,26 @@
-import React, { useEffect } from "react";
-
+"use client";
+import React from "react";
 import NewsCarousel from "./NewsCarousel";
 import useNews from "./hooks/useNews";
 import { useRouter } from "next/navigation";
-import useFetchPaginated from "./hooks/useFetchPaginated";
 
 const NewsSection = () => {
-  
-
   const router = useRouter();
-  const {data: news, error} = useNews()
-  useEffect(() => {
-   
-  },[news])
+  const { data: news, error } = useNews();
+
   return (
-    <div className="bg-[#87b791] pb-12 pt-12 mt-16">
-      
-      <div className="flex justify-center">
-        <h1 className="text-4xl text-[#051608] font-normal">News</h1>
+    <div className="bg-[#282828] pb-12 pt-12 mt-16">
+      <div className="flex justify-center mb-8">
+        <h1 className="text-4xl text-[#D4AF37] font-semibold tracking-wide">News</h1>
       </div>
       <NewsCarousel news={news} />
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-8">
         <button
-            onClick={() => router.push("/news")}
-            className="bg-[#0a2f14] text-yellow-300 px-5
-           h-10 hover:bg-transparent
-           hover:text-[#051608] border-[1.5px] border-[#0a2f14] transition-all duration-500 ease-in-out"
-          >
-            See All News
-          </button>
+          onClick={() => router.push("/news")}
+          className="bg-[#D4AF37] text-[#222222] px-6 py-3 rounded-full font-semibold shadow-lg border border-[#D4AF37] transition-all duration-500 ease-in-out hover:bg-transparent hover:text-[#D4AF37]"
+        >
+          See All News
+        </button>
       </div>
     </div>
   );
