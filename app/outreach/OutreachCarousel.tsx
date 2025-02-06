@@ -143,44 +143,7 @@ const Carousel = ({ images }: Props) => {
         )}
       </div>
 
-      {/* Inner Carousel */}
-      {images && images.length > 1 && (
-        <div className="relative xs:p-2">
-          <Slider {...innerCarouselSettings} ref={innerSliderRef}>
-            {images.map((lowerImage, lowerIndex) => (
-              <div key={lowerIndex} className="max-h-[50px] w-[60px] overflow-hidden">
-                <Image
-                  src={lowerImage.imageUrl}
-                  priority
-                  alt={`Inner Research ${lowerIndex + 1}`}
-                  objectFit="cover"
-                  width={60}
-                  height={50}
-                  className="object-cover rounded-sm max-h-[50px] w-[60px] overflow-hidden"
-                />
-              </div>
-            ))}
-          </Slider>
-
-          {/* Custom Arrows for Inner Carousel */}
-          <button
-            className="absolute mx-2 top-[30%] left-2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 z-10"
-            onClick={handleInnerPrev}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-3 w-3 text-white">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-          <button
-            className="absolute top-[30%] right-2 mx-2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 p-2 rounded-full hover:bg-opacity-70 z-10"
-            onClick={handleInnerNext}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-3 w-3 relative top-0 text-white">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
-        </div>
-      )}
+     
     </div>
   );
 };

@@ -20,154 +20,74 @@ const ViewOutreach = () => {
   const { data: outreach, loading, error } = usePeerOutreach();
   const { setShowModal, showModal } = useContext(ModalContext);
   const { setSelectedItemId, selectedItemId } = useFormModal();
-  const [outreachItems, setOutreachData] =
-    useDataUpdate<PeerOutreach[]>(outreach);
+  const [outreachItems, setOutreachData] = useDataUpdate<PeerOutreach[]>(outreach);
   const router = useRouter();
   const { user } = useContext(UserContext);
   const handleDelete = useDelete();
 
   return (
-    <div className="pt-28 space-y-10 pb-10 bg-[#2c2c2c]">
+    <div className="pt-28 pb-16 min-h-screen bg-gray-900 text-white px-6">
       <Toaster richColors position="bottom-center" />
 
       {/* Modal */}
       {showModal && (
-        <div
-          onClick={() => setShowModal(false)}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-lg shadow-lg md:max-h-[100vh] xs:max-h-[100vh] xs:top-8 mt-4 xs:w-[96%] sm:w-[90%] md:w-[90%] overflow-y-auto"
-          >
-            <OutreachForm
-              outreachItems={outreachItems}
-              setOutreachItems={setOutreachData}
-              id={selectedItemId?.toString()}
-              onClose={() => setShowModal(false)}
-            />
+        <div onClick={() => setShowModal(false)} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div onClick={(e) => e.stopPropagation()} className="bg-gray-800 rounded-lg shadow-lg w-[90%] md:w-[50%] p-6">
+            <OutreachForm outreachItems={outreachItems} setOutreachItems={setOutreachData} id={selectedItemId?.toString()} onClose={() => setShowModal(false)} />
           </div>
         </div>
       )}
 
       {/* Header */}
-      <motion.h1
-        className="flex justify-between items-center mb-12 px-5 "
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-      >
-        <div className="text-4xl text-[#E8EDCE] font-bold">Peer Outreach</div>
+      <motion.div className="flex justify-between items-center mb-10" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        <h1 className="text-3xl font-bold text-yellow-400">Peer Outreach</h1>
         {user && (
-          <div className="mb-5 pt-2">
-            <button
-              className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] border border-[#D4AF37] transition-all duration-300 hover:bg-transparent hover:text-[#D4AF37]"
-              onClick={() => {
-                setSelectedItemId(undefined);
-                setShowModal(true);
-              }}
-            >
-              <BiPlusCircle className="mr-2 text-xl" />
-              Add
-            </button>
-          </div>
+          <button className="flex items-center px-4 py-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 transition" onClick={() => { setSelectedItemId(undefined); setShowModal(true); }}>
+            <BiPlusCircle className="mr-2 text-xl" /> Add Outreach
+          </button>
         )}
-      </motion.h1>
+      </motion.div>
 
-      {/* Content Container */}
-      <div className="absolute top-40 md:w-[800px] xs:w-[370px] lg:w-[1000px] xl:w-[1200px] xs:mx-5 mx-10">
-        <div className="mt-20 flex justify-center">
-          {loading && (
-            <ChakraProvider>
-              <div className="flex justify-center mt-12">
-                <Spinner aria-busy speed="0.6s" className="text-green-500" />
-              </div>
-            </ChakraProvider>
-          )}
-          {outreachItems?.length === 0 && !loading && (
-            <div className="text-[#222222] mt-12">No Outreach Data</div>
-          )}
-          {error && (
-            <div className="flex space-x-3">
-              <div className="text-[#d5342b] mt-3">Failed to load data</div>
-              <button
-                className="flex items-center px-3 py-2 rounded-md bg-yellow-400 text-[#222222] transition-all duration-300 hover:bg-opacity-60"
-                onClick={() => window.location.reload()}
-              >
-                Reload
-              </button>
-            </div>
-          )}
+      {/* Content */}
+      {loading && (
+        <div className="flex justify-center py-10">
+          <ChakraProvider>
+            <Spinner speed="0.6s" size="xl" color="yellow.400" />
+          </ChakraProvider>
         </div>
+      )}
 
-        {/* Outreach Items */}
+      {error && (
+        <div className="text-red-500 flex justify-center py-10">
+          <p>Failed to load data</p>
+        </div>
+      )}
+
+      {outreachItems?.length === 0 && !loading && (
+        <div className="text-gray-400 text-center py-10">No Outreach Data Available</div>
+      )}
+
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {outreachItems?.map((o) => (
-          <div key={o.id} className="shadow-xl mb-10">
-            {/* Outreach Item Header */}
-            <div className="flex justify-between items-center bg-[#E8EDCE] rounded-t-md p-4">
-              <div className="xs:px-2 sm:px-5 border-2 bg-[#E8EDCE] rounded-md border-[#D4AF37] flex justify-center items-center text-[#222222]">
-                {`${o.From.toString().substring(0, 10)} to ${o.To.toString().substring(0, 10)}`}
-              </div>
+          <div key={o.id} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+            <div className="p-4 border-b border-gray-700 flex justify-between items-center">
+              <span className="text-yellow-400 font-semibold">{`${o.From.toString().substring(0, 10)} - ${o.To.toString().substring(0, 10)}`}</span>
               {user && (
                 <ChakraProvider>
                   <div className="flex space-x-2">
-                    <IconButton
-                      aria-label="Edit"
-                      icon={<EditIcon />}
-                      size="sm"
-                      variant="outline"
-                      colorScheme="yellow"
-                      onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-                        setSelectedItemId(o.id);
-                        e.stopPropagation();
-                        setShowModal(true);
-                      }}
-                    />
-                    <IconButton
-                      aria-label="Delete"
-                      icon={<DeleteIcon />}
-                      size="sm"
-                      variant="outline"
-                      colorScheme="red"
-                      onClick={() =>
-                        handleDelete("/outreach", { id: o.id, images: o.images }, setOutreachData)
-                      }
-                    />
+                    <IconButton aria-label="Edit" icon={<EditIcon />} size="sm" variant="outline" colorScheme="yellow" onClick={() => { setSelectedItemId(o.id); setShowModal(true); }} />
+                    <IconButton aria-label="Delete" icon={<DeleteIcon />} size="sm" variant="outline" colorScheme="red" onClick={() => handleDelete("/outreach", { id: o.id, images: o.images }, setOutreachData)} />
                   </div>
                 </ChakraProvider>
               )}
             </div>
-
-            {/* Outreach Item Details */}
-            <div className="grid xs:grid-cols-1 sm:grid-cols-2 rounded-b-lg py-5 bg-[#E8EDCE]">
-              <div>
-                <div className="space-y-3 h-full px-4">
-                  <div className="text-xl text-[#222222]">
-                    <p className="text-[16px] font-semibold">Theme:</p>
-                    <p className="text-[16px] font-light"> {o.theme} </p>
-                  </div>
-                  <div className="text-xl text-[#222222]">
-                    <p className="text-[16px] font-semibold">Venue:</p>
-                    <p className="text-[16px] font-light"> {o.location} </p>
-                  </div>
-                  <div className="text-xl text-[#222222]">
-                    <p className="text-[16px] font-semibold">Description:</p>
-                    <p className="text-[16px] font-light"> {o.description} </p>
-                  </div>
-                  <div className="relative">
-                    <button
-                      onClick={() => router.push(`/outreach/${o.id}`)}
-                      className="bg-[#D4AF37] text-[#222222] text-sm rounded-md px-3 h-10 border border-[#D4AF37] transition-all duration-500 hover:bg-transparent hover:text-[#D4AF37]"
-                    >
-                      More
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <OutreachCarousel images={o.images} />
+            <div className="p-4">
+              <h2 className="text-lg font-bold text-yellow-300">{o.theme}</h2>
+              <p className="text-sm text-gray-300">📍 {o.location}</p>
+              <p className="mt-2 text-sm text-gray-400">{o.description}</p>
+              <button onClick={() => router.push(`/outreach/${o.id}`)} className="mt-4 w-full py-2 bg-yellow-500 text-black rounded-md hover:bg-yellow-400 transition">More Details</button>
             </div>
+            <OutreachCarousel images={o.images} />
           </div>
         ))}
       </div>

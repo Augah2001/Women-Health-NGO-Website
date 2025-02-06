@@ -19,8 +19,8 @@ import { itemVariantsLeft } from "../utils/configs";
 import UserContext from "../contexts/UserContext";
 import { ChakraProvider, Spinner } from "@chakra-ui/react";
 import { deleteFile, extractFilePathFromUrl } from "../utils/uploadsupabse";
-// Helper function to group images by month
 
+// Helper function to group images by month
 export const config = {
   api: {
     bodyParser: {
@@ -28,6 +28,7 @@ export const config = {
     },
   },
 };
+
 const groupImagesByMonth = (images: ImageType[] | null) => {
   return images?.reduce((acc: any, image) => {
     const month = format(new Date(image.date), "MMMM yyyy");
@@ -129,66 +130,71 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <div className="pt-28 min-h-screen space-y-10 pb-1 bg-[#223525]">
+    <div className="pt-28 min-h-screen space-y-10 pb-1 bg-[#302f2f]">
       {addImage && (
         <div
           onClick={() => setAddImage(false)}
-          className="fixed inset-0 bg-black bg-opacity-50  flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
         >
-          <div
-            onClick={(e) => e.stopPropagation()} // Prevent click event from closing the modal when clicking inside the form
-          >
+          <div onClick={(e) => e.stopPropagation()}>
             <AddForm onClose={() => setAddImage(false)} />
           </div>
         </div>
       )}
       <motion.h1
-        className="text-5xl text-[#e6f4ea] flex justify-center  font-normal mb-7"
+        className="text-5xl flex justify-center font-normal mb-7 text-[#D4AF37]"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
       >
-        <h2 className="border-b-4 pb-3 inline-block border-[#637467] text-5xl text-[#e6f4ea] justify-center  font-normal mb-7">
-          Image Gallery
-        </h2>
+        
       </motion.h1>
-
-      {user && (
-        <div className="mx-10 mb-5">
-          <button
-            className="flex items-center hover:text-[#051608]  px-3 py-2 rounded-md bg-[#deedce] hover:shadow-xl text-[#051608] hover:bg-[#dfe4da] transition-all duration-300"
-            onClick={handleAddImage}
-          >
-            <BiPlusCircle className="mr-2 text-xl" />
-            Add Image
-          </button>
-        </div>
-      )}
+      <div className="">
+        {hasMore && !loading && (
+          <div className="mx-10 mb-5">
+            <button
+              onClick={loadMore}
+              className="bg-[#D4AF37] rounded-md text-[#222222] px-3 h-10 transform hover:scale-105 hover:bg-[#D47800] transition-all duration-500 ease-in-out shadow-md"
+            >
+              Load More
+            </button>
+          </div>
+        )}
+        {user && (
+          <div className="">
+            <button
+              className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300 shadow-md"
+              onClick={handleAddImage}
+            >
+              <BiPlusCircle className="mr-2 text-xl" />
+              Add Image
+            </button>
+          </div>
+        )}
+      </div>
 
       <div className="mx-10">
         {loading && (
           <ChakraProvider>
             <div className="flex justify-center mt-5">
-              <Spinner aria-busy className="text-green-500" />
+              <Spinner aria-busy color="#D4AF37" />
             </div>
           </ChakraProvider>
         )}
-        {images?.length == 0 && !error && loading == false && (
-          <div className="text-[#051608] mt-3">No Pictures</div>
+        {images?.length === 0 && !error && loading === false && (
+          <div className="text-[#E8EDCE] mt-3">No Pictures</div>
         )}
 
         {error && (
-          <div className="flex space-x-3">
-            <div className="text-[#d5342b] mt-3">Failed to load data</div>
+          <div className="flex space-x-3 items-center">
+            <div className="text-red-500 mt-3">Failed to load data</div>
             <button
-              className="flex items-center hover:text-[#051608]  
-            px-3 py-2 rounded-md hover:bg-opacity-60  
-            text-[#051608] bg-yellow-400 transition-all duration-300"
+              className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300 shadow-md"
               onClick={() => window.location.reload()}
             >
-              reload
+              Reload
             </button>
           </div>
         )}
@@ -201,7 +207,7 @@ const Gallery: React.FC = () => {
                 variants={itemVariantsLeft}
                 viewport={{ once: false }}
               >
-                <h2 className="text-2xl border-b-4 pb-1 inline-block border-[#637467] text-[#e6f4ea] mb-8">
+                <h2 className="text-2xl border-b-4 pb-1 inline-block border-[#D4AF37] text-[#D4AF37] mb-8">
                   {month}
                 </h2>
               </motion.div>
@@ -218,13 +224,11 @@ const Gallery: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {groupedImages[month]?.map((image, index) => (
                     <div key={index}>
-                      <div className="justify-end my-2">
+                      <div className="flex justify-end my-2">
                         {user && (
                           <button
-                            className=" text-xl px-3 py-1 top-2 hover:scale-110 transition-all ease-in-out duration-300 hover:bg-red-700 right-2 bg-red-500 shadow-md rounded text-white"
-                            onClick={(e) => {
-                              handleDeleteImage(image);
-                            }}
+                            className="text-xl px-3 py-1 hover:scale-110 transition-all ease-in-out duration-300 bg-red-500 shadow-md rounded text-white"
+                            onClick={() => handleDeleteImage(image)}
                           >
                             Delete
                           </button>
@@ -246,7 +250,11 @@ const Gallery: React.FC = () => {
                         />
                         {/* Overlay with title */}
                         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <p className="text-white text-lg font-medium mb-2">
+                          
+                          <p className="text-[#f1e5ba] text-lg font-medium mb-2">
+                            {image?.date.toString().substring(0,10)}
+                          </p>
+                          <p className="text-[#f1e5ba] text-lg font-medium mb-2">
                             {image?.ImageCollectionTitle}
                           </p>
                           <p className="text-white text-lg font-medium">
@@ -283,16 +291,7 @@ const Gallery: React.FC = () => {
           </div>
         </div>
       )}
-      {hasMore && !loading && (
-        <div className="mt-8 flex justify-center">
-          <button
-            onClick={loadMore}
-            className="bg-[#deedce] rounded-md text-[#0c3715] px-3 h-10 transform hover:scale-105 hover:bg-[#a4bc8a] transition-all duration-500 ease-in-out"
-          >
-            Load More
-          </button>
-        </div>
-      )}
+      
     </div>
   );
 };

@@ -83,7 +83,7 @@ const Navbar = () => {
       suppressHydrationWarning={true}
       className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}
     >
-      <nav className={`h-20 flex w-full justify-between  ${path.startsWith('/research') || path.startsWith('/outreach')  || path.startsWith('/news')? 'bg-[#d0b24d]': 'bg-[#2222226d]'} `}>
+      <nav className={`h-20 flex w-full justify-between  ${path.startsWith('/research') || path.startsWith('/gallery') || path.startsWith('/outreach')  || path.startsWith('/news')? 'bg-[#d0b24d]': 'bg-[#2222226d]'} `}>
         <div className="size-40">
           <Image
             src={pic}

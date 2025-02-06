@@ -32,7 +32,7 @@ const NewsCard = ({ news, setNews, onEdit }: Props) => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
     >
-      <div className="bg-[#212121] text-gold-400 border-none shadow-lg rounded-lg overflow-hidden">
+      <div className=" bg-gray-900 text-gold-400 border-none shadow-lg rounded-lg overflow-hidden">
         {/* Image */}
         {news.imageUrl && (
           <Image className="w-full object-cover" src={news.imageUrl} width={300} alt="news" height={200} />
