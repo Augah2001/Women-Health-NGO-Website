@@ -4,7 +4,7 @@ import RSW from './RSW'
 
 const page = () => {
   return (
-    <div>
+    <div className=''>
       <RSW/>
     </div>
   )

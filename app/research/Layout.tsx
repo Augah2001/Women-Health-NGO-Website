@@ -37,9 +37,7 @@ const ResearchLayout = ({ children }: { children: ReactNode }) => {
                 <Tab _selected={{ bg: "#505050", color: "white" }} className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer">
                   <Link className="text-[#f1ebd7] " href="/research/working-paper">Working Papers</Link>
                 </Tab>
-                <Tab _selected={{ bg: "#505050", color: "white" }} className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer">
-                  <Link className="text-[#f1ebd7] " href="/research/drugs-used">Drugs Being Used</Link>
-                </Tab>
+                
                 <Tab _selected={{ bg: "#505050", color: "white" }} className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer">
                   <Link className="text-[#f1ebd7] " href="/research/research-with-us">Research With Us</Link>
                 </Tab>

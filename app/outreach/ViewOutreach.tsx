@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { motion } from "framer-motion";
 import OutreachCarousel from "./OutreachCarousel";
 import usePeerOutreach from "../hooks/usePeerOutreach";
@@ -9,7 +9,6 @@ import { useContext } from "react";
 import useFormModal from "../hooks/useFormModal";
 import OutreachForm from "./OutreachForm";
 import useDataUpdate from "../hooks/useDataUpdate";
-
 import { ChakraProvider, IconButton, Spinner } from "@chakra-ui/react";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import useDelete from "../hooks/useDelete";
@@ -23,47 +22,48 @@ const ViewOutreach = () => {
   const { setSelectedItemId, selectedItemId } = useFormModal();
   const [outreachItems, setOutreachData] =
     useDataUpdate<PeerOutreach[]>(outreach);
-
   const router = useRouter();
-
   const { user } = useContext(UserContext);
-
   const handleDelete = useDelete();
 
   return (
-    <div className="pt-28 space-y-10 pb-10 bg-[#223525]">
+    <div className="pt-28 space-y-10 pb-10 bg-[#2c2c2c]">
       <Toaster richColors position="bottom-center" />
+
+      {/* Modal */}
+      {showModal && (
+        <div
+          onClick={() => setShowModal(false)}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-lg shadow-lg md:max-h-[100vh] xs:max-h-[100vh] xs:top-8 mt-4 xs:w-[96%] sm:w-[90%] md:w-[90%] overflow-y-auto"
+          >
+            <OutreachForm
+              outreachItems={outreachItems}
+              setOutreachItems={setOutreachData}
+              id={selectedItemId?.toString()}
+              onClose={() => setShowModal(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Header */}
       <motion.h1
-        className="flex justify-between mb-12 px-5"
+        className="flex justify-between items-center mb-12 px-5 "
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
       >
-        {showModal && (
-          <div
-            onClick={() => setShowModal(false)}
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-          >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-lg shadow-lg md:max-h-[100vh] xs:max-h-[100vh] xs:top-8 mt-4 xs:w-[96%] sm:w-[90%] md:w-[90%] overflow-y-auto "
-            >
-              <OutreachForm
-                outreachItems={outreachItems}
-                setOutreachItems={setOutreachData}
-                id={selectedItemId?.toString()}
-                onClose={() => setShowModal(false)}
-              />
-            </div>
-          </div>
-        )}
-        <div className="text-4xl text-[#e6f4ea] font-normal">Peer Outreach</div>
+        <div className="text-4xl text-[#E8EDCE] font-bold">Peer Outreach</div>
         {user && (
           <div className="mb-5 pt-2">
             <button
-              className="flex items-center hover:text-[#051608] px-3 py-2 rounded-md hover:bg-[#deedce] text-[#051608] bg-[#dfe4da] transition-all duration-300"
+              className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] border border-[#D4AF37] transition-all duration-300 hover:bg-transparent hover:text-[#D4AF37]"
               onClick={() => {
                 setSelectedItemId(undefined);
                 setShowModal(true);
@@ -75,39 +75,40 @@ const ViewOutreach = () => {
           </div>
         )}
       </motion.h1>
-      <div className="absolute top-40 md:w-[800px] xs:w-[370px] lg:w-[1000px] pe-5 xl:w-[1200px] xs:mx-5 mx-10">
+
+      {/* Content Container */}
+      <div className="absolute top-40 md:w-[800px] xs:w-[370px] lg:w-[1000px] xl:w-[1200px] xs:mx-5 mx-10">
         <div className="mt-20 flex justify-center">
-        { loading && (
-          <ChakraProvider>
-            <div className="flex justify-center mt-12">
-              <Spinner aria-busy speed="0.60s" className="text-green-500" />
+          {loading && (
+            <ChakraProvider>
+              <div className="flex justify-center mt-12">
+                <Spinner aria-busy speed="0.6s" className="text-green-500" />
+              </div>
+            </ChakraProvider>
+          )}
+          {outreachItems?.length === 0 && !loading && (
+            <div className="text-[#222222] mt-12">No Outreach Data</div>
+          )}
+          {error && (
+            <div className="flex space-x-3">
+              <div className="text-[#d5342b] mt-3">Failed to load data</div>
+              <button
+                className="flex items-center px-3 py-2 rounded-md bg-yellow-400 text-[#222222] transition-all duration-300 hover:bg-opacity-60"
+                onClick={() => window.location.reload()}
+              >
+                Reload
+              </button>
             </div>
-          </ChakraProvider>
-        )}
-        {outreachItems?.length == 0 && loading == false && (
-          <div className="text-[#051608] mt-12">No Outreach Data</div>
-        )}
-        
-        {error && (
-          <div className="flex space-x-3">
-            <div className="text-[#d5342b] mt-3">Failed to load data</div>
-            <button className="flex items-center hover:text-[#051608]  
-            px-3 py-2 rounded-md hover:bg-opacity-60  
-            text-[#051608] bg-yellow-400 transition-all duration-300"
-            onClick={() =>window.location.reload()}
-            >reload</button>
-          </div>
-        )}
+          )}
         </div>
-     
+
+        {/* Outreach Items */}
         {outreachItems?.map((o) => (
           <div key={o.id} className="shadow-xl mb-10">
-            <div className="flex justify-between items-center bg-[#e6f4ea] rounded-t-md p-4">
-              <div className="xs:px-2 sm:px-5 border-[1.5px] bg-[#d6edd9] rounded-md border-[#637467] flex justify-center items-center text-[#37493c]">
-                {`${o.From.toString().substring(
-                  0,
-                  10
-                )} to  ${o.To.toString().substring(0, 10)}`}
+            {/* Outreach Item Header */}
+            <div className="flex justify-between items-center bg-[#E8EDCE] rounded-t-md p-4">
+              <div className="xs:px-2 sm:px-5 border-2 bg-[#E8EDCE] rounded-md border-[#D4AF37] flex justify-center items-center text-[#222222]">
+                {`${o.From.toString().substring(0, 10)} to ${o.To.toString().substring(0, 10)}`}
               </div>
               {user && (
                 <ChakraProvider>
@@ -118,9 +119,7 @@ const ViewOutreach = () => {
                       size="sm"
                       variant="outline"
                       colorScheme="yellow"
-                      onClick={(
-                        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-                      ) => {
+                      onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         setSelectedItemId(o.id);
                         e.stopPropagation();
                         setShowModal(true);
@@ -133,40 +132,34 @@ const ViewOutreach = () => {
                       variant="outline"
                       colorScheme="red"
                       onClick={() =>
-                        handleDelete("/outreach", {id:o.id, images: o.images}, setOutreachData)
+                        handleDelete("/outreach", { id: o.id, images: o.images }, setOutreachData)
                       }
                     />
                   </div>
                 </ChakraProvider>
               )}
             </div>
-            <div className="grid xs:grid-cols-1 sm:grid-cols-2 rounded-b-lg py-5 bg-[#c7e2ca]">
+
+            {/* Outreach Item Details */}
+            <div className="grid xs:grid-cols-1 sm:grid-cols-2 rounded-b-lg py-5 bg-[#E8EDCE]">
               <div>
                 <div className="space-y-3 h-full px-4">
-                  <div className="text-2xl text-[#0a3115]">
+                  <div className="text-xl text-[#222222]">
                     <p className="text-[16px] font-semibold">Theme:</p>
-                    <p className="text-[16px] font-light text-[#244f30]">
-                      {o.theme}
-                    </p>
+                    <p className="text-[16px] font-light"> {o.theme} </p>
                   </div>
-                  <div className="text-2xl text-[#0a3115]">
+                  <div className="text-xl text-[#222222]">
                     <p className="text-[16px] font-semibold">Venue:</p>
-                    <p className="text-[16px] font-light text-[#244f30]">
-                      {o.location}
-                    </p>
+                    <p className="text-[16px] font-light"> {o.location} </p>
                   </div>
-                  <div className="text-2xl text-[#0a3115]">
+                  <div className="text-xl text-[#222222]">
                     <p className="text-[16px] font-semibold">Description:</p>
-                    <p className="text-[16px] font-light text-[#244f30]">
-                      {o.description}
-                    </p>
+                    <p className="text-[16px] font-light"> {o.description} </p>
                   </div>
-                  <div className="relative text-[#0a3115]">
+                  <div className="relative">
                     <button
                       onClick={() => router.push(`/outreach/${o.id}`)}
-                      className="bg-[#0a2f14] top-6 text-sm rounded-md text-yellow-300 px-3 
-         h-10 hover:bg-[#deedce] 
-         hover:text-[#051608] border-[1.5px] border-[#0a2f14] transition-all duration-500 ease-in-out"
+                      className="bg-[#D4AF37] text-[#222222] text-sm rounded-md px-3 h-10 border border-[#D4AF37] transition-all duration-500 hover:bg-transparent hover:text-[#D4AF37]"
                     >
                       More
                     </button>
