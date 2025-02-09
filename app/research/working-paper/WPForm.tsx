@@ -180,10 +180,10 @@ const WorkingPaperForm = ({
               className=" text-2xl text-[#0c361d] flex justify-end "
               onClick={onClose}
             >
-              <BiX />
+              <BiX className="text-yellow-400" />
             </div>
             <div>
-              <h1 className="text-gray-900 text-4xl font-normal mb-4">
+              <h1 className="text-[#D4AF37] text-4xl font-normal mb-4">
                 Working Paper
               </h1>
               <div className="">

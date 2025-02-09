@@ -27,7 +27,7 @@ const ResearchLayout = ({ children }: { children: ReactNode }) => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <Box className="bg-[#222222]  py-32">
+        <Box className="bg-gray-900  py-32">
           <Tabs variant="enclosed" colorScheme="teal ">
             <div className="px-4">
               <TabList className="flex justify-center">

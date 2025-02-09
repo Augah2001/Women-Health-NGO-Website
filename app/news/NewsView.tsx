@@ -24,7 +24,7 @@ const View = () => {
   }, [data]);
 
   return (
-    <div className="pb-10  px-8 min-h-screen pt-40 bg-[#302f2f] rounded-md text-[#E8EDCE]">
+    <div className="pb-10  px-8 min-h-screen pt-40 bg-gray-900 rounded-md text-[#E8EDCE]">
       {showModal && (
         <div
           onClick={() => setShowModal(false)}
@@ -32,7 +32,7 @@ const View = () => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
+            className="bg-gray-700 rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
           >
             <NewsForm
               newsItems={news}

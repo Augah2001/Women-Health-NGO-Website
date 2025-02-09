@@ -22,7 +22,7 @@ const FormMarkdown = ({ id, label, value,onChange, errors }: Props) => {
   }, []);
   return (
     <div>
-      <label className="text-slate-600 text-[14px] mb-2">{label}</label>
+      <label className="text-yellow-400 text-[14px] mb-2">{label}</label>
       <SimpleMdeReact
         className="text-slate-300 rounded-sm m-input"
         options={autofocusNoSpellcheckerOptions}

@@ -95,7 +95,7 @@ const OutreachForm = ({
   });
 
   const doSubmit = async () => {
-    console.log('sssss')
+
     try {
       setIsLoading(true);
   
@@ -238,7 +238,7 @@ const OutreachForm = ({
             >
               <BiX />
             </div>
-            <h1 className="text-[#08210d] text-4xl font-normal mb-4">
+            <h1 className="text-[#D4AF37]  text-4xl font-normal mb-4">
               Peer Outreach
             </h1>
             <div className="">

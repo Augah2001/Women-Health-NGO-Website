@@ -17,6 +17,7 @@ import DropDownContext from "../contexts/DropDownContext";
 
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
+
   const { province, setProvince } = useContext(ProvinceContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +84,7 @@ const Navbar = () => {
       suppressHydrationWarning={true}
       className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}
     >
-      <nav className={`h-20 flex w-full justify-between  ${path.startsWith('/research') || path.startsWith('/gallery') || path.startsWith('/outreach')  || path.startsWith('/news')? 'bg-[#d0b24d]': 'bg-[#2222226d]'} `}>
+      <nav className={`h-20 flex w-full justify-between  ${path.startsWith('/research')|| path.startsWith('/login')  || path.startsWith('/about') || path.startsWith('/gallery') || path.startsWith('/outreach')  || path.startsWith('/news')? 'bg-[#d0b24d]': 'bg-[#2222226d]'} `}>
         <div className="size-40">
           <Image
             src={pic}
@@ -94,6 +95,7 @@ const Navbar = () => {
             className="xs:w-[100%] cursor-pointer md:h- lg:h-14 sm:max-w-[70%] md:max-w-[90%] lg:max-w-[80%] xl:max-w-[50%] mt-3 h-14 ml-5"
           />
         </div>
+        {/* <div className="text-red-500">{user && 'augah'}</div> */}
         <div>
           <div className="flex items-center justify-between pt-[10px] mt-4 space-x-4 me-5 text-lg font-semibold">
             <Show above="sm">
@@ -125,7 +127,62 @@ const Navbar = () => {
                   </div>
                 ))}
             </Show>
+            {
+              <div className={styles.navLinks}>
+                <div className="flex xs:w-0 sm:w-full  items-center">
+                  {user && (
+                    <div
+                      className="
+                     "
+                    >
+                      <ChakraProvider>
+                        <Show above="md">
+                          <FaUser
+                            onClick={toggleDropdown}
+                            size={30}
+                            className="text-yellow-300 border-[2px] border-yellow-300 p-[2px] rounded-full hover:text-[#2c9e4d] hover:border-[#2c9e4d] cursor-pointer"
+                          />
+                        </Show>
+                      </ChakraProvider>
+
+                      {isDropdownOpen && (
+                        <ul className="absolute right-0 mt-2 w-48 bg-[#F3F5E7] hover:bg-[#e8edce] border border-gray-200 hover:rounded-md rounded-md shadow-lg">
+                          <div className="border-b-[1px] border-gray-400 px-4 py-2  font-normal text-gray-500 ">
+                            augah
+                          </div>
+                          <li
+                            className="px-4 py-2 text-gray-800 hover:bg-[#d478003e] cursor-pointer"
+                            onClick={handleLogout}
+                          >
+                            Logout
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+                  )}
+                  {/* {!user && (
+                    <div className="flex items-center">
+                      <button
+                        className="bg-transparent border-[1.5px] border-yellow-500 my-auto  hover:border-black
+                                     px-4 py-2 mt-[17px] font-normal 
+                                     cursor-pointer transition duration-300 ease-in-out
+                                    hover:text-yellow-500 hover:bg-black text-yellow-500 me-3"
+                        onClick={() => {
+                          path === "/register"
+                            ? router.push("/admin/")
+                            : router.push("admin/register");
+                        }}
+                      >
+                        {path === "/register" ? "Login" : "Register"}
+                      </button>
+                    </div>
+                  )} */}
+                </div>
+              </div>
+            }
+            
           </div>
+          
         </div>
       </nav>
     </div>

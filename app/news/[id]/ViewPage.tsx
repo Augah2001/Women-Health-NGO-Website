@@ -1,49 +1,87 @@
+"use client";
 import React, { useEffect } from "react";
-import { News } from "@/app/utils/types";
 import useNewsSingle from "@/app/hooks/useNewsSingle";
-import Image from "next/image";
+import NextImage from "next/image";
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  ChakraProvider,
+  extendTheme,
+} from "@chakra-ui/react";
 
-const ViewPage = ({ id }: { id: string }) => {
+// Define our custom theme with our chosen colors
+const theme = extendTheme({
+  colors: {
+    primary: "#222222",   // Dark text for headings and content
+    accent: "#D4AF37",    // Gold accent elements if needed
+    secondary: "#E8EDCE", // Light background for panels/cards
+    background: "#1A202C",// Overall page background
+  },
+});
+
+const ViewPage: React.FC<{ id: string }> = ({ id }) => {
   const { data: news } = useNewsSingle("news", id);
+
   useEffect(() => {
     console.log(news?.imageUrl);
   }, [news]);
 
   return (
-    <div className="pt-36 bg-[#bde5c5] pb-16 flex justify-center min-h-screen">
-      <div className="w-[85%] max-w-4xl bg-[#DEEDCE] rounded-lg shadow-lg p-6">
-        {/* News Title */}
-        <h1 className="text-3xl font-semibold text-[#051608] mb-4">
-          {news?.title}
-        </h1>
+    <ChakraProvider theme={theme}>
+      <Box
+        pt={36}
+        pb={16}
+        minH="100vh"
+        bg="background"
+        display="flex"
+        justifyContent="center"
+      >
+        <Container maxW="4xl">
+          <Box bg="secondary" borderRadius="lg" boxShadow="lg" p={6}>
+            {/* News Title */}
+            <Heading as="h1" size="xl" color="primary" mb={4}>
+              {news?.title}
+            </Heading>
 
-        {/* News Image */}
-        {news?.imageUrl &&(
-          <div className="relative w-full h-[450px] mb-8 rounded-lg overflow-hidden shadow-md">
-            <Image
-              className="object-cover"
-              src={news?.imageUrl}
-              layout="fill"
-              alt="Research"
-            />
-          </div>
-        )}
+            {/* News Image */}
+            {news?.imageUrl && (
+              <Box
+                position="relative"
+                w="100%"
+                h="450px"
+                mb={8}
+                borderRadius="lg"
+                overflow="hidden"
+                boxShadow="md"
+              >
+                <NextImage
+                  src={news.imageUrl}
+                  alt="News Image"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </Box>
+            )}
 
-        {/* News Date */}
-        <div className="mt-8 px-5 text-right">
-          <span className="text-sm text-slate-600 italic">
-            {news?.date.toString().substring(0, 10)}
-          </span>
-        </div>
+            {/* News Date */}
+            <Box mt={8} px={5} textAlign="right">
+              <Text fontSize="sm" color="gray.600" fontStyle="italic">
+                {news?.date.toString().substring(0, 10)}
+              </Text>
+            </Box>
 
-        {/* News Content */}
-        <div className="mt-5 px-5">
-          <p className="text-lg text-slate-800 leading-relaxed">
-            {news?.body}
-          </p>
-        </div>
-      </div>
-    </div>
+            {/* News Content */}
+            <Box mt={5} px={5}>
+              <Text fontSize="lg" color="primary" lineHeight="tall">
+                {news?.body}
+              </Text>
+            </Box>
+          </Box>
+        </Container>
+      </Box>
+    </ChakraProvider>
   );
 };
 

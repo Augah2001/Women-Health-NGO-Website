@@ -45,7 +45,7 @@ const View = () => {
   const { user } = useContext(UserContext); 
 
   return (
-    <div className="pb-10 pt-14 px-8 min-h-screen bg-[#302f2f] rounded-md text-[#E8EDCE]">
+    <div className="pb-10 pt-14 px-8 min-h-screen bg-gray-800 rounded-md text-[#E8EDCE]">
       {/* Modal for adding/editing research */}
       {showModal && (
         <div
@@ -54,7 +54,7 @@ const View = () => {
         >
           <div
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the form
-            className="bg-white rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
+            className="bg-gray-700 rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
           >
             <ResearchForm
               researchItems={research}

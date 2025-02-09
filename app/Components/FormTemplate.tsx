@@ -174,7 +174,7 @@ const FormTemplate: React.FC<Props> = ({ children, doSubmit, data, setData, sche
   );
 
   return (
-    <form className="bg-white p-5  rounded-md" onSubmit={handleSubmit}>
+    <form className="bg-gray-700 p-5  rounded-md" onSubmit={handleSubmit}>
       {children(
         renderInput,
         renderPasswordInput,

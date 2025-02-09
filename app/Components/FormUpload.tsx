@@ -26,7 +26,7 @@ const FormTextInput = ({ id, label, type, onChange, errors, multiple }: Props) =
 
   return (
       <div className="mb-4">
-          <label htmlFor={id} className="block text-slate-600 text-sm mb-2">
+          <label htmlFor={id} className="block text-yellow-400  text-sm mb-2">
               {label}
           </label>
 
@@ -40,10 +40,10 @@ const FormTextInput = ({ id, label, type, onChange, errors, multiple }: Props) =
                   className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
               />
               <div className="flex items-center">
-                  <button className="bg-[#62b866] hover:bg-[#498d4c] h-full text-white font-bold py-2 px-4 rounded-l focus:outline-none focus:shadow-outline">
+                  <button className="bg-[#62b866] hover:bg-[#498d4c] h-full text-[#fffcdc] font-bold py-2 px-4 rounded-l focus:outline-none focus:shadow-outline">
                       Choose File
                   </button>
-                  <span className="border border-gray-300 rounded-r py-2 px-3 text-gray-700 leading-tight">
+                  <span className=" text-[#f9f9f9] border border-gray-300 rounded-r py-2 px-3  leading-tight">
                       {fileNames.length > 0 ? fileNames.join(", ") : "No file chosen"}
                   </span>
               </div>

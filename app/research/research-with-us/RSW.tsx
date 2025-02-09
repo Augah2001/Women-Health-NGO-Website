@@ -57,7 +57,7 @@ const ResearchWithUs: React.FC = () => {
         >
           <div
             onClick={(e) => e.stopPropagation()} // Prevent click event from closing the modal when clicking inside the form
-            className="bg-white rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
+            className="bg- rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
           >
             <RSWForm
               setResearchWithUs={setResearchWithUs}
@@ -76,19 +76,14 @@ const ResearchWithUs: React.FC = () => {
           {user && (
             <div className="pt-2">
               <button
-                className="flex items-center hover:text-primary px-3 py-2 rounded-md hover:bg-[#deedce] text-primary bg-[#dfe4da] transition-all duration-300"
-                onClick={() => {
-                  setSelectedItemId(undefined);
-                  setShowModal(true);
-                }}
-              >
-                <BiPlusCircle className="mr-2 text-xl" />
+                className="flex items-center px-4 py-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 transition" onClick={() => { setSelectedItemId(undefined); setShowModal(true); }}>
+            <BiPlusCircle className="mr-2 text-xl" /> 
                 Add
               </button>
             </div>
           )}
         </div>
-        <p className="mt-4 text-lg text-[#d9ecb8]">
+        <p className="mt-4 text-lg text-[#f2f3c2]">
           Join us in our ongoing research projects. We are looking for talented
           individuals to collaborate with.
         </p>
@@ -158,7 +153,7 @@ const ResearchWithUs: React.FC = () => {
                           icon={<DeleteIcon />}
                           size="sm"
                           variant="outline"
-                          colorScheme="red"
+                          colorScheme="yellow"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleDelete(

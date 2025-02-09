@@ -47,7 +47,7 @@ const ResearchCard = ({ research, onEdit, onDelete, setResearch }: Props) => {
 
   return (
     <motion.div
-      className="bg-[#282828] h-full flex flex-col justify-between transition-colors duration-300"
+      className="bg-gray-700 h-full flex flex-col justify-between transition-colors duration-300"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "0px 0px -50px 0px" }}
@@ -99,7 +99,7 @@ const ResearchCard = ({ research, onEdit, onDelete, setResearch }: Props) => {
                 size="sm"
                 variant="outline"
                 borderColor="#D4AF37"
-                color="#D4AF37"
+                colorScheme="red"
                 _hover={{ bg: "transparent", color: "#D4AF37", borderColor: "#D4AF37" }}
                 onClick={
                   research

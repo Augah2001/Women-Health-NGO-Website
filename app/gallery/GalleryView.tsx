@@ -130,7 +130,7 @@ const Gallery: React.FC = () => {
   };
 
   return (
-    <div className="pt-28 min-h-screen space-y-10 pb-1 bg-[#302f2f]">
+    <div className="pt-28 min-h-screen space-y-10 pb-1 bg-gray-900">
       {addImage && (
         <div
           onClick={() => setAddImage(false)}

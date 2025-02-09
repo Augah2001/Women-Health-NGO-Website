@@ -35,7 +35,7 @@ const FormPasswordInput = ({
   return (
     <Box className="mb-4">
       <FormControl id={id}>
-        <label className="text-slate-600 text-[14px] ">{label}</label>
+        <label className="text-yellow-400 text-[14px] ">{label}</label>
         <div className="flex mt-1">
           <input className=" text-slate-300 rounded-sm chakra-input "
            type={showPassword ? "text" : "password"}
@@ -46,8 +46,8 @@ const FormPasswordInput = ({
             }}/>
             {<div className="flex ms-1 " onClick={()=> {
               setShowPassword(!showPassword)
-             }}>{ !showPassword?<FaEye className="my-auto me-1"
-             />: <FaEyeSlash className="my-auto me-1" />}</div>}
+             }}>{ !showPassword?<FaEye className="my-auto me-1 text-yellow-400"
+             />: <FaEyeSlash className="my-auto me-1 text-yellow-400" />}</div>}
         </div>
       </FormControl>
       <Text className="text-red-500 text-[11px] max-w-[195px]" >{errors[id]}</Text>

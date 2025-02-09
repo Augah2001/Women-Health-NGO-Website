@@ -47,25 +47,25 @@ body {
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
-    background-color: white;
+    background-color: #242a35;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #ffffff;
+    background-color: #242a35;
     width: 1px;
     height: 1px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #53c56e;
+    background-color: #D4AF37;
     border-radius: 10px;
-    border: 4px solid #ffffff;
+    border: 4px solid #242a35;
     width: 1px;
     height: 1px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #2d8f4a;
+    background: #c2b285;
 }
 
 /* CustomButton.css */
@@ -74,7 +74,7 @@ body {
 .custom-button {
   background-color: #00bcd4; /* Primary color */
   
-  color: rgb(255, 255, 255);
+  color: rgb(255, 252, 220);
   padding: 10px 20px;
   border-radius: 5px;
   text-transform: none;
@@ -92,10 +92,11 @@ body {
 
 .custom-button:hover {
   opacity: 0.9;
-  background-color: rgb(255, 255, 255);
-  color: rgb(58, 138, 89);
-  border-radius: 0px;
-  border-color: rgb(58, 138, 89);
+  border-radius: 5px;
+  background-color: rgb(79, 185, 119);
+  color: rgb(255, 252, 220);
+  border-radius: 5px;
+  border-color: rgb(66, 164, 104);
   border-width: 1.5px;
   /* Darker primary color */
   box-shadow:none;
@@ -120,13 +121,13 @@ body {
   
   font-size: 13px;
   color: #38393a;
-  background-color: #e5f0ff;
+  background-color: #fffff4;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .m-input {
   width: 100%;
   padding: 8px 12px;
-  border-bottom: 1px solid #e2e8f0;
+  
   
   font-size: 13px;
   color: #38393a;
