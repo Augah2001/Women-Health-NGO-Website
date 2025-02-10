@@ -112,8 +112,8 @@ const Navbar = () => {
                       suppressHydrationWarning={true}
                       href={link.href ? link.href : "#"}
                       onClick={() => setClicked(link.label)}
-                      className={`${
-                        clicked === link.label ? "text-[#222222]" : "text-[#505050]"
+                      className={`${ path !=='/'?
+                        (clicked === link.label ? "text-[#222222]" : "text-[#505050]"): (clicked!== link.label? "text-yellow-300" : "text-[#D4AF37]")
                       } transition-opacity duration-200 mt-5`}
                     >
                       {link.label}
@@ -140,16 +140,14 @@ const Navbar = () => {
                           <FaUser
                             onClick={toggleDropdown}
                             size={30}
-                            className="text-yellow-300 border-[2px] border-yellow-300 p-[2px] rounded-full hover:text-[#2c9e4d] hover:border-[#2c9e4d] cursor-pointer"
+                            className="text-yellow-300 border-[2px] border-yellow-300 p-[2px] rounded-full hover:text-gray-800 hover:border-gray-800 cursor-pointer"
                           />
                         </Show>
                       </ChakraProvider>
 
                       {isDropdownOpen && (
                         <ul className="absolute right-0 mt-2 w-48 bg-[#F3F5E7] hover:bg-[#e8edce] border border-gray-200 hover:rounded-md rounded-md shadow-lg">
-                          <div className="border-b-[1px] border-gray-400 px-4 py-2  font-normal text-gray-500 ">
-                            augah
-                          </div>
+                         
                           <li
                             className="px-4 py-2 text-gray-800 hover:bg-[#d478003e] cursor-pointer"
                             onClick={handleLogout}
@@ -177,10 +175,44 @@ const Navbar = () => {
                       </button>
                     </div>
                   )} */}
+
                 </div>
               </div>
             }
-            
+            <div className="sm:w-0 sm:h-0 flex items-center">
+              <BiMenu
+                onClick={() => setIsOpen(!isOpen)}
+                className={` sm:w-0 sm:h-0 text-3xl mt-3 text-[#223525]
+                   active:transform ${isOpen && "rotate-90"}
+                    transition-transform duration-700 ease-out`}
+              />
+              {isOpen && (
+                <div>
+                  <ul className="absolute right-0  mt-6 w-48 bg-[#F3F5E7] hover:bg-[#e8edce] border border-gray-200  shadow-lg">
+                   
+                    {links.map((item) =>
+                      item.MenuItems.map((i, index) => (
+                        <li
+                          key={index}
+                          className='" px-4 py-4 w-screen text-gray-800 font-normal text-sm bg-[#F3F5E7] hover:bg-[#deedce]  cursor-pointer"'
+                        >
+                          <Link onClick={() => setIsOpen(!false)} className="text-sm" href={i.href}>
+                            {i.label}
+                          </Link>
+                        </li>
+                      ))
+                    )}
+                    {user && (
+                      <li className='" px-4 py-4 w-screen text-gray-800 font-normal text-sm bg-[#F3F5E7] hover:bg-[#deedce]  cursor-pointer"'>
+                        <div className="text-sm" onClick={handleLogout}>
+                          Logout
+                        </div>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
           
         </div>
