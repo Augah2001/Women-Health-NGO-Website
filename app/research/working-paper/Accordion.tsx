@@ -19,7 +19,7 @@ import apiClient from "@/app/utils/apiClient";
 import saveAs from "file-saver";
 import { WorkingPaper } from "@/app/utils/types";
 import WPForm from "@/app/research/working-paper/WPForm";
-import { Toaster, toast } from "sonner";
+import { Toaster } from "sonner";
 import useDataUpdate from "@/app/hooks/useDataUpdate";
 import useDelete from "@/app/hooks/useDelete";
 import useFormModal from "@/app/hooks/useFormModal";
@@ -30,10 +30,9 @@ import { downloadFile } from "@/app/utils/uploadsupabse";
 
 const theme = extendTheme({
   colors: {
-    // Our chosen palette:
-    primary: "#222222",       // Main dark background
-    accent: "#D4AF37",        // Gold accent
-    secondary: "#E8EDCE",     // Off-white/light gray for text/panels
+    primary: "#222222",    // Dark background
+    accent: "#D4AF37",     // Gold accent
+    secondary: "#E8EDCE",  // Light panel/text color
   },
 });
 
@@ -55,7 +54,7 @@ const Accord = () => {
   const [workingPapersData, setWorkingPaperData] =
     useDataUpdate<WorkingPaper[]>(workingPapers);
   const { selectedItemId, setSelectedItemId } = useFormModal();
-  const { showModal, setShowModal } = React.useContext(ModalContext);
+  const { showModal, setShowModal } = useContext(ModalContext);
   const { user } = useContext(UserContext);
 
   return (
@@ -138,11 +137,10 @@ const Accord = () => {
                   <h2>
                     <AccordionButton
                       _expanded={{
-                        bg: theme.colors.accent, // Gold when expanded
-                        color: theme.colors.primary, // Text becomes dark for contrast
+                        bg: theme.colors.accent,
+                        color: theme.colors.primary,
                       }}
-                      // bg={'#ffffff'} // Black background
-                      color={theme.colors.secondary} // Light text
+                      color={theme.colors.secondary}
                       _hover={{ bg: "#333333" }}
                       fontSize={14}
                       borderBottomWidth="1px"

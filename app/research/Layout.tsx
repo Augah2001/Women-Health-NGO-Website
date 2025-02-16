@@ -1,8 +1,20 @@
-'use client'
-import { ChakraProvider, Show, Box, Tab, Tabs, TabList, TabPanel, TabPanels, extendTheme } from "@chakra-ui/react";
+"use client";
+import {
+  ChakraProvider,
+  Box,
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel,
+  TabPanels,
+  extendTheme,
+} from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Accord from "./working-paper/Accordion";
+import ResearchView from "./ResearchView";
 
 const theme = extendTheme({
   colors: {
@@ -19,7 +31,14 @@ const theme = extendTheme({
   },
 });
 
-const ResearchLayout = ({ children }: { children: ReactNode }) => {
+const ResearchLayout = ({ children }: { children?: ReactNode }) => {
+  const path = usePathname();
+
+  // Determine the controlled index:
+  // - /research or /home => first tab (index 0)
+  // - /research/working-paper => second tab (index 1)
+  const selectedIndex = path === "/research/working-paper" ? 1 : 0;
+
   return (
     <ChakraProvider theme={theme}>
       <motion.div
@@ -27,26 +46,41 @@ const ResearchLayout = ({ children }: { children: ReactNode }) => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <Box className="bg-gray-900  py-32">
-          <Tabs variant="enclosed" colorScheme="teal ">
+        <Box className="bg-gray-900 min-h-screen py-32">
+          <Tabs variant="enclosed" colorScheme="teal" index={selectedIndex}>
             <div className="px-4">
               <TabList className="flex justify-center">
-                <Tab _selected={{ bg: "#505050", color: "white" }} className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer">
-                  <Link className="text-[#f1ebd7] " href="/research">Explore Our Research</Link>
+                <Tab
+                  _selected={{ bg: "#505050", color: "white" }}
+                  className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer"
+                >
+                  <Link className="text-[#f1ebd7]" href="/research">
+                    Explore Our Research
+                  </Link>
                 </Tab>
-                <Tab _selected={{ bg: "#505050", color: "white" }} className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer">
-                  <Link className="text-[#f1ebd7] " href="/research/working-paper">Working Papers</Link>
-                </Tab>
-                
-                <Tab _selected={{ bg: "#505050", color: "white" }} className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer">
-                  <Link className="text-[#f1ebd7] " href="/research/research-with-us">Research With Us</Link>
+                <Tab
+                  _selected={{ bg: "#505050", color: "white" }}
+                  className="font-semibold hover:font-bold text-[#f1ebd7] text-xl px-8 py-2 cursor-pointer"
+                >
+                  <Link className="text-[#f1ebd7]" href="/research/working-paper">
+                    Working Papers
+                  </Link>
                 </Tab>
               </TabList>
             </div>
 
             <TabPanels>
+              {/* First TabPanel */}
               <TabPanel>
-                {children}
+                {/* You can render children for the Research view or your dedicated component */}
+                {path === "/research" ? (
+                  <ResearchView />
+                ) : null}
+              </TabPanel>
+
+              {/* Second TabPanel */}
+              <TabPanel>
+                {path === "/research/working-paper" ? <Accord /> : null}
               </TabPanel>
             </TabPanels>
           </Tabs>

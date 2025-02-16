@@ -31,19 +31,7 @@ model SuperUser {
 
 
 
-// schema.prisma
-model ResearchWithUs {
-  id           Int      @id @default(autoincrement())
-  title        String
-  description  String
-  startDate    DateTime
-  endDate      DateTime
-  collaborators String[]
 
-  documentUrl     String
-
-  postDate     DateTime @default(now())
-}
 
 
 

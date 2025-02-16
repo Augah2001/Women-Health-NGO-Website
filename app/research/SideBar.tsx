@@ -19,13 +19,12 @@ const theme = extendTheme({
   },
 });
 
-const SidePanel = () => {
+const TabsPanel = () => {
   const menuItems = [
    
     {href:"/research", label:"Explore Our Research"},
     {href:"/research/working-paper", label:"Working Papers"},
-    { href:"/research/drugs-used", label: "Drugs Being Used" },
-    {href: "/research/research-with-us" , label:"Research With Us"}
+
   ];
 
   return (
@@ -60,4 +59,4 @@ const SidePanel = () => {
   );
 };
 
-export default SidePanel;
+export default TabsPanel;
