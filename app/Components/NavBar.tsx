@@ -53,7 +53,7 @@ const Navbar = () => {
     },
     { label: "OUTREACH", href: "/outreach", MenuItems: [{ label: "Outreach", href: "/outreach" }] },
     { label: "NEWS", href: "/news", MenuItems: [{ label: "News", href: "/news" }] },
-    { label: "GALLERY", href: "/gallery", MenuItems: [{ label: "Gallery", href: "/gallery" }] },
+    { label: "GALLERY", href: "/gallery", MenuIntems: [{ label: "Gallery", href: "/gallery" }] },
   ]);
 
   const [clicked, setClicked] = useState("HOME");
@@ -118,7 +118,7 @@ const Navbar = () => {
                     >
                       {link.label}
                       {selectedLink === link.label &&
-                        link.MenuItems.length > 1 && (
+                        link?.MenuItems?.length > 1 && (
                           <div suppressHydrationWarning={true} className="absolute h-full w-full left-[120%] z-10000 top-4 justify-center flex">
                             <Menu linkItems={link.MenuItems} />
                           </div>
@@ -191,7 +191,7 @@ const Navbar = () => {
                   <ul className="absolute right-0  mt-6 w-48 bg-[#F3F5E7] hover:bg-[#e8edce] border border-gray-200  shadow-lg">
                    
                     {links.map((item) =>
-                      item.MenuItems.map((i, index) => (
+                      item.MenuItems?.map((i, index) => (
                         <li
                           key={index}
                           className='" px-4 py-4 w-screen text-gray-800 font-normal text-sm bg-[#F3F5E7] hover:bg-[#deedce]  cursor-pointer"'

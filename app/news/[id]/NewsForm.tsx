@@ -23,11 +23,11 @@ interface NewsData {
 interface Props {
   id?: string | number;
 
-  setNewsList: Dispatch<SetStateAction<any>>;
+  setNewsItems: Dispatch<SetStateAction<any>>;
   onClose: () => void;
 }
 
-const NewsForm = ({ id, setNewsList, onClose }: Props) => {
+const NewsForm = ({ id, setNewsItems, onClose }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
 
@@ -116,8 +116,8 @@ const NewsForm = ({ id, setNewsList, onClose }: Props) => {
   
       // Handle success response
       toast.success(id ? "News updated successfully" : "News added successfully");
-      setNewsList((prevNewsList: any) => 
-        id 
+      setNewsItems((prevNewsList: any) =>
+        id
           ? prevNewsList.map((news: any) =>
               news.id === response.data.id ? response.data : news
             )
@@ -127,6 +127,7 @@ const NewsForm = ({ id, setNewsList, onClose }: Props) => {
     } catch (error: any) {
       const errorMessage = (typeof error.response?.data?.error === 'string' && error.response?.data?.error) || "An error occurred.";
       toast.error(errorMessage);
+      console.log(error)
     } finally {
       setIsLoading(false);
     }

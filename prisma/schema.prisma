@@ -10,40 +10,15 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-  directUrl      = env("DIRECT_URL")
+  url      = "postgresql://postgres.bmjxbbetdtcdplufqqvg:Darmascus$160571@aws-0-eu-west-3.pooler.supabase.com:5432/postgres"
+  directUrl      = "postgresql://postgres.bmjxbbetdtcdplufqqvg:Darmascus$160571@aws-0-eu-west-3.pooler.supabase.com:5432/postgres"
 
   
 }
 
-model DrugInfo {
-  id           Int      @id @default(autoincrement())
-  startAge     Int
-  endAge       Int
-  gender       String
-  race         String
-  drugName     String
-  price        Float
-  location     String
-  startDate    DateTime @default(now())
 
-  endDate      DateTime @default(now())
-  usersCount   Int
-  Province     Province @relation(fields: [ProvinceCode], references: [code])
-  ProvinceCode String
-}
 
-model Province {
-  id        Int        @id @default(autoincrement())
-  name      String     @unique
-  code      String     @unique
-  password  String
-  drugInfos DrugInfo[]
-  
-  resetTokenExpires DateTime?
-  resetToken          String?
 
-}
 
 model SuperUser {
   id       Int    @id @default(autoincrement())

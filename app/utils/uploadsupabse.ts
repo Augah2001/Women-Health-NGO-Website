@@ -28,7 +28,7 @@ function generateRandomString(length: number=12) {
     }
   
     try {
-      const { data, error } = await supabase.storage.from('Zcldn-uploads').download(path);
+      const { data, error } = await supabase.storage.from('whiz').download(path);
   
       if (error) {
         console.error("Error downloading file:", error.message);
@@ -83,7 +83,7 @@ function generateRandomString(length: number=12) {
     try {
       const { error } = await supabase
         .storage
-        .from('Zcldn-uploads') // Name of the bucket
+        .from('whiz') // Name of the bucket
         .remove([path]);
   
       if (error) {
@@ -106,7 +106,7 @@ export const uploadFile = async (file: File): Promise<string | null> => {
   try {
     const { data, error } = await supabase
       .storage
-      .from('Zcldn-uploads') // Name of the bucket
+      .from('whiz') // Name of the bucket
       .upload(`public/${generateRandomString(12)}${Date.now().toString()}`, file);
 
     if (error) {
@@ -114,7 +114,7 @@ export const uploadFile = async (file: File): Promise<string | null> => {
       return null;
     }
 
-    return data?.path ? supabase.storage.from('Zcldn-uploads').getPublicUrl(data.path).data.publicUrl : null;
+    return data?.path ? supabase.storage.from('whiz').getPublicUrl(data.path).data.publicUrl : null;
   } catch (err) {
     console.error('Error during file upload:', err);
     return null;
