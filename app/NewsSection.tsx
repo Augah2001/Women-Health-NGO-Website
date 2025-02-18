@@ -9,7 +9,7 @@ const NewsSection = () => {
   const { data: news, error } = useNews();
 
   return (
-    <div className="bg-[#282828] pb-12 pt-12 mt-16">
+    <div className="bg-[#282828] rounded-lg shadow-sm mb-5 pb-12 pt-12 mt-16">
       <div className="flex justify-center mb-8">
         <h1 className="text-4xl text-[#D4AF37] font-semibold tracking-wide">News</h1>
       </div>

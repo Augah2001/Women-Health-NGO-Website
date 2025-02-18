@@ -94,8 +94,7 @@ const Accord = () => {
         {user && (
           <div className="pt-2">
             <button
-              className="flex items-center px-4 py-2 rounded-full bg-accent text-primary hover:bg-transparent hover:text-accent border border-accent transition-all duration-300"
-              onClick={() => {
+               className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300"onClick={() => {
                 setSelectedItemId(undefined);
                 setShowModal(true);
               }}

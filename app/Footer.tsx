@@ -13,7 +13,7 @@ const Footer = () => {
   const router = useRouter();
 
   return (
-    <footer className="bg-[#282828] text-gray-300 py-6">
+    <footer className="bg-[#282828] text-gray-300 mt-12 py-6">
       {/* Partners Belt (Static) */}
       <div className="max-w-6xl mx-auto px-4 mb-8">
     
@@ -33,10 +33,15 @@ const Footer = () => {
           <div className="text-center">
             <h2 className="text-xl text-center text-[#D4AF37] font-bold mb-4">About Us</h2>
             <p className="text-sm leading-relaxed">
-              Zimbabwe Civil Liberties and Drug Network is dedicated to promoting
-              sexual reproductive rights and harm reduction. Our mission is to
-              empower communities with knowledge and advocate for equitable
-              policies.
+            Sexual Reproductive Rights & Harm Reduction Observatory is committed to advancing sexual reproductive rights, harm reduction, and women's health in Zimbabwe. Our mission is to empower communities with knowledge and to advocate for equitable policies that support change.
+
+
+
+
+
+
+
+
             </p>
           </div>
           {/* Navigation Section */}
@@ -112,20 +117,10 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="mt-8 border-t border-gray-600 pt-4">
+      <div className="mt-8 border-t h-[1px] border-yellow-400 pt-4">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-xs">
-            &copy; 2024 Zimbabwe Civil Liberties and Drug Network. All rights
-            reserved.
-          </p>
-          <div className="flex space-x-4">
-            <p className="text-xs cursor-pointer hover:text-white">
-              Privacy Policy
-            </p>
-            <p className="text-xs cursor-pointer hover:text-white">
-              Terms of Service
-            </p>
-          </div>
+         
+          
         </div>
       </div>
 

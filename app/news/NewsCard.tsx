@@ -35,7 +35,7 @@ const NewsCard = ({ news, setNews, onEdit }: Props) => {
       <div className=" bg-gray-800 text-gold-400 border-none shadow-lg rounded-lg overflow-hidden">
         {/* Image */}
         {news.imageUrl && (
-          <Image className="w-full object-cover" src={news.imageUrl} width={300} alt="news" height={200} />
+          <Image className="w-full max-h-72 object-cover" src={news.imageUrl} width={300} alt="news" height={200} />
         )}
 
         {/* Content */}
@@ -58,13 +58,13 @@ const NewsCard = ({ news, setNews, onEdit }: Props) => {
           {user && (
             <div className="flex space-x-2">
               <button
-                className="p-2 border border-gold-400 rounded-md text-gold-300 hover:bg-gold-500 hover:text-black transition"
+                className="p-2 border text-yellow-400 border-gold-400 rounded-md text-gold-300 hover:bg-gold-500 hover:text-black transition"
                 onClick={onEdit}
               >
-                <Pencil className="w-4 h-4" />
+                <Pencil className="w-4 h-4 text-yellow-400 border-red-500  border-yellow-400 rounded-md text-gold-300 hover:text-yellow-500" />
               </button>
               <button
-                className="p-2 border border-red-500 text-red-400 rounded-md hover:bg-red-500 hover:text-black transition"
+                className="p-2 border border-red-500 text-red-400 rounded-md hover:bg-transparent transition"
                 onClick={() => onDelete('news', { id: news.id, documentUrl: news.documentUrl, imageUrl: news.imageUrl }, setNews)}
               >
                 <Trash className="w-4 h-4" />

@@ -3,8 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import newspaper from "../public/newspaper.jpg";
-import img_1 from "../public/386651126_738787231624635_1270710599597749514_n copy.jpg";
+import newspaper from "../public/image_2.jpeg";
+import img_1 from "../public/image_1.jpeg";
 
 const Services = () => {
   const router = useRouter();
@@ -32,9 +32,9 @@ const Services = () => {
           viewport={{ once: true }}
           onClick={() => router.push("/news")}
         >
-          <h2 className="text-xl text-[#D4AF37] font-bold underline">NDPO NEWS</h2>
+          <h2 className="text-xl text-[#D4AF37] font-bold ">NEWS</h2>
           <p className="text-sm text-[#f1ebd7] mt-3 leading-relaxed">
-            Stay informed with the latest updates on drug policy, research, and community outreach efforts in Zimbabwe.
+          Stay informed with the latest updates on sexual reproductive rights policies, harm reduction initiatives, and community outreach efforts in Zimbabwe.
           </p>
         </motion.div>
 
@@ -50,10 +50,9 @@ const Services = () => {
           viewport={{ once: true }}
           onClick={() => router.push("/research")}
         >
-          <h2 className="text-xl text-[#D4AF37] font-bold underline">Situational Analysis</h2>
+          <h2 className="text-xl text-[#D4AF37] font-bold ">Situational Analysis</h2>
           <p className="text-sm text-[#f1ebd7] mt-3 leading-relaxed">
-            Gain insights into the current state of drug use and its impact on Zimbabwean society through data-driven assessments.
-          </p>
+          Gain insights into the current landscape of sexual reproductive rights, harm reduction strategies, and women's health issues in Zimbabwe through data-driven assessments.          </p>
         </motion.div>
         </div>
         <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 px-8 mt-10">
@@ -83,9 +82,9 @@ const Services = () => {
           viewport={{ once: true }}
           onClick={() => router.push("/research/working-paper")}
         >
-          <h2 className="text-xl text-[#D4AF37] font-bold underline">Working Paper Series</h2>
+          <h2 className="text-xl text-[#D4AF37] font-bold ">Working Paper</h2>
           <p className="text-sm text-[#f1ebd7] mt-3 leading-relaxed">
-            Explore our collection of research papers that address drug-related issues and policy recommendations.
+          Explore our collection of research papers addressing issues of sexual reproductive rights, harm reduction, and women's health in Zimbabwe, offering evidence-based policy recommendations for improved community well-being.
           </p>
         </motion.div>
 
@@ -98,9 +97,9 @@ const Services = () => {
           viewport={{ once: true }}
           onClick={() => router.push("/news")}
         >
-          <h2 className="text-xl text-[#D4AF37] font-bold underline">Peer Outreach</h2>
+          <h2 className="text-xl text-[#D4AF37] font-bold">Peer Outreach</h2>
           <p className="text-sm text-[#f1ebd7] mt-3 leading-relaxed">
-            Engage in peer outreach programs focused on education, prevention, and support for affected communities.
+          Engage in peer outreach programs focused on education, prevention, and support for communities impacted by challenges related to sexual reproductive rights, harm reduction, and women's health in Zimbabwe.
           </p>
         </motion.div>
 

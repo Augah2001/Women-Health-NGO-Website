@@ -42,8 +42,8 @@ const ViewOutreach = () => {
       <motion.div className="flex justify-between items-center mb-10" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
         <h1 className="text-3xl font-bold text-yellow-400">Peer Outreach</h1>
         {user && (
-          <button className="flex items-center px-4 py-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 transition" onClick={() => { setSelectedItemId(undefined); setShowModal(true); }}>
-            <BiPlusCircle className="mr-2 text-xl" /> Add Outreach
+          <button  className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300" onClick={() => { setSelectedItemId(undefined); setShowModal(true); }}>
+            <BiPlusCircle className="mr-2 text-xl" /> Add 
           </button>
         )}
       </motion.div>
@@ -75,8 +75,20 @@ const ViewOutreach = () => {
               {user && (
                 <ChakraProvider>
                   <div className="flex space-x-2">
-                    <IconButton aria-label="Edit" icon={<EditIcon />} size="sm" variant="outline" colorScheme="yellow" onClick={() => { setSelectedItemId(o.id); setShowModal(true); }} />
-                    <IconButton aria-label="Delete" icon={<DeleteIcon />} size="sm" variant="outline" colorScheme="red" onClick={() => handleDelete("/outreach", { id: o.id, images: o.images }, setOutreachData)} />
+                    <IconButton  aria-label="Edit"
+                                    icon={<EditIcon />}
+                                    size="sm"
+                                    variant="outline"
+                                    borderColor="#D4AF37"
+                                    color="#D4AF37"
+                                    _hover={{ bg: "transparent", color: "#D4AF37", borderColor: "#D4AF37" }} onClick={() => { setSelectedItemId(o.id); setShowModal(true); }} />
+                    <IconButton aria-label="Delete"
+                icon={<DeleteIcon />}
+                size="sm"
+                variant="outline"
+                borderColor="#D4AF37"
+                colorScheme="red"
+                _hover={{ bg: "transparent", color: "#D4AF37", borderColor: "#D4AF37" }} onClick={() => handleDelete("/outreach", { id: o.id, images: o.images }, setOutreachData)} />
                   </div>
                 </ChakraProvider>
               )}

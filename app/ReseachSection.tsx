@@ -16,7 +16,7 @@ const ResearchSection = () => {
   };
 
   return (
-    <div className="mt-20 bg-[#282828] py-16 px-6">
+    <div className="mt-20 bg-[#282828] shadow-sm rounded-lg py-16 px-6">
       {/* Section Title */}
       <div className="flex justify-center mb-8">
         <h1 className="text-4xl text-[#D4AF37] font-semibold tracking-wide">

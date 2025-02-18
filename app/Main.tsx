@@ -19,7 +19,7 @@ const Main = () => {
 
   return (
     <ChakraProvider>
-      <div className="relative min-h-screen bg-[#222222] text-white">
+      <div className="relative min-h-screen bg-[#222222] text-white mb-10">
         {/* Header Section with Image Background Transition */}
         <header className="relative w-full h-[700px]">
           {/* Image Background */}
@@ -90,7 +90,7 @@ const Main = () => {
         </Container>
 
         {/* Additional Sections */}
-        <Container maxW="container.xl" className="mt-5 shadow-lg rounded-md">
+        <Container maxW="container.xl" className="mt-5 rounded-md">
           <ServicesSection />
           <ResearchSection />
           <NewsSection />

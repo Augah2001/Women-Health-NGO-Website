@@ -60,14 +60,14 @@ const Carousel = ({ news }: Props) => {
             viewport={{ once: true, margin: '0px 0px -50px 0px' }}
             variants={slideVariants}
           >
-            <div className="w-full h-40 relative group">
+            <div className="w-full rounded-md h-40 relative group">
               {item.imageUrl && (
                 <Image
                   src={item.imageUrl}
                   alt={`News ${index + 1}`}
                   layout="fill"
                   objectFit="cover"
-                  className="transition-opacity duration-300"
+                  className="transition-opacity rounded-md duration-300"
                 />
               )}
               <div className="absolute inset-0 bg-black bg-opacity-40 px-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

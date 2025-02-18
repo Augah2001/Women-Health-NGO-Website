@@ -165,11 +165,11 @@ const Gallery: React.FC = () => {
         {user && (
           <div className="">
             <button
-              className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300 shadow-md"
+              className="flex items-center mx-5 px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300 shadow-md"
               onClick={handleAddImage}
             >
-              <BiPlusCircle className="mr-2 text-xl" />
-              Add Image
+              <BiPlusCircle className=" text-xl" />
+              Add
             </button>
           </div>
         )}

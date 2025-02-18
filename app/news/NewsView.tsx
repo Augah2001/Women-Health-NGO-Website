@@ -94,7 +94,7 @@ const View = () => {
         {news?.map((newsItem) => (
           <motion.div
             key={newsItem.id}
-            className=" rounded-md transform hover:scale-103 transition-all duration-500 ease-in-out"
+            className=" rounded-md  transform hover:scale-103 transition-all duration-500 ease-in-out"
           >
             <NewsCard
               setNews={setNews}
