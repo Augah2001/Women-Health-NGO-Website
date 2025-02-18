@@ -20,7 +20,7 @@ const ResearchSection = () => {
       {/* Section Title */}
       <div className="flex justify-center mb-8">
         <h1 className="text-4xl text-[#D4AF37] font-semibold tracking-wide">
-          Explore Our Research
+          Research
         </h1>
       </div>
 

@@ -55,7 +55,7 @@ const Main = () => {
         </header>
 
         {/* Main Content Section */}
-        <Container maxW="container.xl" className="py-20">
+        <Container maxW="container.xl" className="pt-20 pb-10">
           <Flex
             direction={{ base: "column", md: "row" }}
             alignItems="center"
@@ -69,52 +69,28 @@ const Main = () => {
                 transition={{ duration: 2, ease: "easeInOut" }}
                 viewport={{ once: true }}
               >
-                <h1 className="text-4xl text-[#D4AF37] font-bold mb-4">
-                  The National Drug Observatory
-                </h1>
+                
                 <p className="text-md text-[#e8edce] leading-relaxed">
-                  A growing number of people are questioning national and
-                  international drug policies that prioritize strict law
-                  enforcement and punishment in an attempt to end the manufacture,
-                  trade, use, and cultivation of banned substances—a strategy known
-                  as the "war on drugs." The Global Drug Policy Observatory aims to
-                  advance evidence-based and human rights-based drug policies through
-                  thorough reporting, monitoring, and analysis of policy developments
-                  at both national and international levels. The project provides a
-                  platform for engaging with diverse audiences, including the press,
-                  opinion leaders, scholars, and members of law enforcement and
-                  policymaking sectors, to deepen and broaden the current policy
-                  discourse. The Observatory conducts a range of research activities,
-                  exploring not only the dynamics and implications of existing and
-                  emerging policy issues but also the processes behind policy shifts at
-                  various levels of governance.
+                We recognize that building an equitable future necessitates forging
+                unbreakable links between access to Sexual and Reproductive Health and
+                Rights (SRHR), the elimination of gender-based inequities especially in the
+                form of Gender Based Violence in our Communities and the need for policies
+                that observes drug use as a public health concern. The observatory platform
+                will host a cutting-edge data visualization and knowledge platform in order to
+                champion robust policies and pioneering programs aimed at eradicating
+                Gender-Based Violence from our society and the criminalization of drug use
+                for our people.
                 </p>
               </motion.div>
             </Box>
 
             {/* Animated Image Moves Left & Swaps Right */}
-            <Box flex="1">
-              <motion.div
-                initial={{ opacity: 1, x: -100 }} // Starts from the left
-                whileInView={{ opacity: 1, x: [0, 50, 0] }} // Moves right & bounces back
-                transition={{ duration: 2, ease: "easeInOut" }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.10 }} // Slight hover effect
-              >
-                <Image
-                  src={Img_9177}
-                  alt="Logo"
-                  width={800}
-                  height={600}
-                  className="shadow-lg object-cover rounded border-4 border-[#D4AF37]"
-                />
-              </motion.div>
-            </Box>
+            
           </Flex>
         </Container>
 
         {/* Additional Sections */}
-        <Container maxW="container.xl" className="py-10">
+        <Container maxW="container.xl" className="mt-5 shadow-lg rounded-md">
           <ServicesSection />
           <ResearchSection />
           <NewsSection />

@@ -15,11 +15,14 @@ const Services = () => {
   };
 
   return (
-    <div className="bg-[#282828] py-16">
+    <div className="pt-0">
      
 
       {/* Services Grid */}
-      <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-8 mt-10">
+      <h1 className="text-4xl flex justify-center  text-[#D4AF37] font-semibold tracking-wide">
+          Services
+        </h1>
+      <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 px-8 mt-16">
         {/* NDPO NEWS */}
         <motion.div
           className="p-6 rounded-lg shadow-lg bg-[#3b3b3b] hover:bg-[#505050] transition duration-500 cursor-pointer"
@@ -36,22 +39,7 @@ const Services = () => {
         </motion.div>
 
         {/* Image 1 */}
-        <motion.div
-          className="w-full"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <Image
-            src={newspaper}
-            alt="NDPO News"
-            width={500}
-            height={350}
-            quality={80}
-            className="rounded-lg shadow-lg object-cover"
-          />
-        </motion.div>
+        
 
         {/* NDPO Situational Analysis */}
         <motion.div
@@ -67,8 +55,26 @@ const Services = () => {
             Gain insights into the current state of drug use and its impact on Zimbabwean society through data-driven assessments.
           </p>
         </motion.div>
+        </div>
+        <div className="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 px-8 mt-10">
 
         {/* NDPO Working Paper Series */}
+         {/* Image 2 */}
+         <motion.div
+          className="w-full"
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <Image
+            src={img_1}
+            alt="Peer Outreach"
+            height={350}
+            width={500}
+            className="rounded-lg shadow-lg object-cover"
+          />
+        </motion.div>
         <motion.div
           className="p-6 rounded-lg shadow-lg bg-[#3b3b3b] hover:bg-[#505050] transition duration-500 cursor-pointer"
           variants={fadeInUp}
@@ -98,7 +104,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Image 2 */}
+       
         <motion.div
           className="w-full"
           variants={fadeInUp}
@@ -107,10 +113,11 @@ const Services = () => {
           viewport={{ once: true }}
         >
           <Image
-            src={img_1}
-            alt="Peer Outreach"
-            height={350}
+            src={newspaper}
+            alt="NDPO News"
             width={500}
+            height={350}
+            quality={80}
             className="rounded-lg shadow-lg object-cover"
           />
         </motion.div>
