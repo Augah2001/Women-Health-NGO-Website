@@ -146,7 +146,7 @@ const Navbar = () => {
                       </ChakraProvider>
 
                       {isDropdownOpen && (
-                        <ul className="absolute right-0 mt-2 w-48 bg-[#F3F5E7] hover:bg-[#e8edce] border border-gray-200 hover:rounded-md rounded-md shadow-lg">
+                        <ul className="absolute right-0 mt-2 w-48 bg-[#F3F5E7] hover:bg-[#f1ea59] border border-gray-200 hover:rounded-md rounded-md shadow-lg">
                          
                           <li
                             className="px-4 py-2 text-gray-800 hover:bg-[#d478003e] cursor-pointer"
@@ -194,16 +194,16 @@ const Navbar = () => {
                       item.MenuItems?.map((i, index) => (
                         <li
                           key={index}
-                          className='" px-4 py-4 w-screen text-gray-800 font-normal text-sm bg-[#F3F5E7] hover:bg-[#deedce]  cursor-pointer"'
+                          className='" px-4 py-4 w-screen text-gray-800 font-normal text-sm bg-[#f5f4e7]   cursor-pointer"'
                         >
-                          <Link onClick={() => setIsOpen(!false)} className="text-sm" href={i.href}>
+                          <Link onClick={() => setIsOpen(!false)} className="text-sm hover:text-[#a79436]" href={i.href}>
                             {i.label}
                           </Link>
                         </li>
                       ))
                     )}
                     {user && (
-                      <li className='" px-4 py-4 w-screen text-gray-800 font-normal text-sm bg-[#F3F5E7] hover:bg-[#deedce]  cursor-pointer"'>
+                      <li className='" px-4 py-4 w-screen text-gray-800 font-normal text-sm bg-[#f5f4e7]  cursor-pointer"'>
                         <div className="text-sm" onClick={handleLogout}>
                           Logout
                         </div>
