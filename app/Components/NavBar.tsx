@@ -47,7 +47,7 @@ const Navbar = () => {
       MenuItems: [
         { label: "Research Papers", href: "/research" },
         { label: "Working Paper Series", href: "/research/working-paper" },
-        { label: "Research With Us", href: "/research/research-with-us" },
+        
 
       ],
     },

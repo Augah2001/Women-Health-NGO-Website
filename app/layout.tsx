@@ -25,45 +25,42 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "Zimbabwe Civil Liberties and Drug Network (ZCLDN)",
+  title: "Women Health Issues Trust Zimbabwe (WHIZ) - SRHR & Harm Reduction Observatory",
   icons: {
     icon: '/favicon.ico', // /public path
   },
   description:
-    "Zimbabwe Civil Liberties and Drug Network (ZCLDN) National Drug Observatory focuses on drug use research, policy advocacy, harm reduction, and community outreach. Stay informed with the latest news, research papers, and policy developments on drug use in Zimbabwe.",
+    "Women Health Issues Trust Zimbabwe (WHIZ) SRHR & Harm Reduction Observatory focuses on sexual and reproductive health and rights (SRHR), gender equity, drug policy reform, and harm reduction. Explore data-driven insights, policy advocacy, and community engagement for a healthier Zimbabwe.",
   keywords: [
     "Zimbabwe",
-    "Civil Liberties",
-    "Drug Network",
-    "National Drug Observatory",
-    "ZCLDN",
-    "drug use",
-    "harm reduction",
-    "policy advocacy",
-    "HIV prevention",
-    "drug policy",
-    "substance abuse",
-    "research",
-    "community outreach",
-    "mental health",
-    "rehabilitation",
-    "Hepatitis",
-    "youth",
-    "public health",
-    "data analysis", "zcldn", "zcldn.org"
+    "Women Health Issues Trust",
+    "WHIZ",
+    "SRHR",
+    "Sexual and Reproductive Health",
+    "Gender-Based Violence",
+    "Harm Reduction",
+    "Drug Policy Reform",
+    "Public Health",
+    "HIV Prevention",
+    "Reproductive Rights",
+    "Community Outreach",
+    "Policy Advocacy",
+    "Data Analysis",
+    "Health Equity",
+    "Human Rights",
   ],
-  authors: {name:"Zimbabwe Civil Liberties and Drug Network", url:"https://yourdomain.com"}, // Replace with your actual domain'
-  // viewport: "width=device-width, initial-scale=1",
+  authors: {name: "Women Health Issues Trust Zimbabwe", url: "https://yourdomain.com"}, // Replace with actual domain
   robots: "index, follow",
   
   twitter: {
     card: "summary_large_image",
-    title: "Zimbabwe Civil Liberties and Drug Network National Drug Observatory - ZCLDN",
+    title: "WHIZ - SRHR & Harm Reduction Observatory",
     description:
-      "Zimbabwe Civil Liberties and Drug Network (ZCLDN) National Drug Observatory focuses on drug use research, policy advocacy, harm reduction, and community outreach.",
+      "WHIZ is dedicated to advancing sexual and reproductive health rights, gender equality, and drug policy reform in Zimbabwe through data-driven advocacy and collaboration.",
     // Replace with a relevant image URL for social sharing
   },
 };
+
 
 export default function RootLayout({
   children,
