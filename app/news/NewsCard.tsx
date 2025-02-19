@@ -61,7 +61,7 @@ const NewsCard = ({ news, setNews, onEdit }: Props) => {
                 className="p-2 border text-yellow-400 border-gold-400 rounded-md text-gold-300 hover:bg-gold-500 hover:text-black transition"
                 onClick={onEdit}
               >
-                <Pencil className="w-4 h-4 text-yellow-400 border-red-500  border-yellow-400 rounded-md text-gold-300 hover:text-yellow-500" />
+                <Pencil className="w-4 h-4 text-yellow-400  border-yellow-400 rounded-md text-gold-300 hover:text-yellow-500" />
               </button>
               <button
                 className="p-2 border border-red-500 text-red-400 rounded-md hover:bg-transparent transition"

@@ -154,13 +154,13 @@ const NewsForm = ({ id, setNewsItems, onClose }: Props) => {
         ) => (
           <div>
             <div
-              className=" text-2xl text-[#0c361d] flex justify-end "
+              className=" text-2xl text-yellow-500 flex justify-end "
               onClick={onClose}
             >
               <BiX />
             </div>
             <div>
-              <h1 className="text-black text-2xl font-bold mb-4">News</h1>
+              <h1 className="text-yellow-500 text-2xl font-bold mb-4">News</h1>
               <div className="">
                 <div className="">
                   {renderFileUpload("image", "Cover Image", "image/*", false)}
