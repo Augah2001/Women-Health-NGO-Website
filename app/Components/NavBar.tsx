@@ -173,7 +173,7 @@ const Navbar = () => {
                 className={`sm:w-0 sm:h-0 text-3xl mt-3 active:transform
                   ${
                     path !== "/"
-                      ? 
+                    ? 
                         "text-[#505050]"
                       
                       : "text-yellow-400"

@@ -32,7 +32,7 @@ const ViewOutreach = () => {
       {/* Modal */}
       {showModal && (
         <div onClick={() => setShowModal(false)} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div onClick={(e) => e.stopPropagation()} className="bg-gray-700 rounded-lg shadow-lg w-[90%] md:w-[50%] p-6">
+          <div onClick={(e) => e.stopPropagation()} className="bg-gray-700 rounded-lg shadow-lg w-[90%] md:w-[50%] p-6 overflow-y-auto">
             <OutreachForm outreachItems={outreachItems} setOutreachItems={setOutreachData} id={selectedItemId?.toString()} onClose={() => setShowModal(false)} />
           </div>
         </div>

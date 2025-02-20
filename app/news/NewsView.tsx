@@ -32,7 +32,7 @@ const View = () => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-gray-700 rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] overflow-y-auto"
+            className="bg-gray-700 rounded-lg shadow-lg max-h-[100vh] mt-4 w-[90%] sm:w-[90%] md:w-[90%] oautoverflow-y-"
           >
             <NewsForm
               newsItems={news}
