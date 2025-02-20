@@ -89,29 +89,7 @@ const Footer = () => {
               Harare <br />
               Phone: 0777056475
             </address>
-            <div className="flex justify-center text-center space-x-4 mt-4">
-              <a
-                href="https://x.com/CivilDrug"
-                aria-label="Twitter"
-                className="hover:text-[#D4AF37] transition duration-300"
-              >
-                <FaTwitter className="text-2xl" />
-              </a>
-              <a
-                href="https://www.facebook.com/ZIMCLDN/"
-                aria-label="Facebook"
-                className="hover:text-[#D4AF37] transition duration-300"
-              >
-                <FaFacebook className="text-2xl" />
-              </a>
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="hover:text-[#D4AF37] transition duration-300"
-              >
-                <FaYoutube className="text-2xl" />
-              </a>
-            </div>
+            
           </div>
         </div>
       </div>
