@@ -52,9 +52,9 @@ const Main = () => {
             > 
             <div className="shadow-lg rounded-md">
               <p className="text-[#D4AF37] text-5xl font-extrabold p-4 bg-[#433f3f] bg-opacity-50  text-center">Women Health Issues Trust Zimbabwe</p>
-                <p className="text-[#D4AF37] text-5xl font-extrabold shadow-lg p-4 bg-[#433f3f] bg-opacity-50 text-center">Sexual Reproductive Rights &amp; Harm Reduction Observatory</p>
+                <p className="text-[#D4AF37] text-5xl font-extrabold shadow-lg p-4 bg-[#433f3f] bg-opacity-50 text-center">SRHR and Harm Reduction Observatory</p>
             </div>    </motion.h1>
-          </div>>
+          </div>
         </header>
 
         {/* Main Content Section */}
