@@ -73,7 +73,7 @@ const View = () => {
         viewport={{ once: true }}
       >
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl border-b-4 pb-3 inline-block border-[#D4AF37] text-[#D4AF37]">
+          <h2 className="text-4xl font-bold pb-3 mb-3 flex - mx-auto  border-[#D4AF37] text-[#D4AF37]">
             Research Papers
           </h2>
           {user && (
@@ -95,7 +95,7 @@ const View = () => {
         {loading && (
           <ChakraProvider>
             <div className="flex justify-center mt-5">
-              <Spinner aria-busy color="#D4AF37" />
+              <Spinner size = 'xl' aria-busy color="#D4AF37" />
             </div>
           </ChakraProvider>
         )}
@@ -117,11 +117,11 @@ const View = () => {
         )}
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full mt-10">
         {research?.map((research) => (
           <motion.div
             key={research.id}
-            className="shadow-md rounded-md transform hover:scale-103 transition-all duration-500 ease-in-out"
+            className="shadow-md rounded-md transform hover:scale-103 transition-all  duration-500 ease-in-out"
           >
             <ResearchCard
               setResearch={setResearch}

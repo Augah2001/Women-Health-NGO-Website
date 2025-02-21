@@ -88,8 +88,8 @@ const Accord = () => {
 
       {/* Header Section */}
       <div className="flex justify-between items-center pt-10 mb-8 pb-0 px-5 bg-primary">
-        <div className="text-4xl text-[#D4AF37] mx-6 font-normal mb-7">
-          Working Paper Series
+        <div className="text-4xl flex mx-auto text-[#D4AF37] font-bold  mb-7">
+          Working Papers
         </div>
         {user && (
           <div className="pt-2">
@@ -111,7 +111,7 @@ const Accord = () => {
         {loading && (
           <ChakraProvider>
             <div className="flex justify-center mt-5">
-              <Spinner aria-busy speed="0.6s" color={theme.colors.accent} />
+              <Spinner size={'xl'} aria-busy speed="0.6s" color={theme.colors.accent} />
             </div>
           </ChakraProvider>
         )}

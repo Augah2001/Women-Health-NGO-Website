@@ -75,7 +75,7 @@ const Carousel = ({ news }: Props) => {
               </div>
             </div>
             <div className="p-4 bg-[#3b3b3b]">
-              <h2 className="text-xs font-normal text-gray-300">
+              <h2 className="text-xs font-normal text-[#faf6d2]">
                 Date: {item.date.toString().substring(0, 10)}
               </h2>
               <div className="flex justify-center mt-4">

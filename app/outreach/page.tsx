@@ -5,6 +5,7 @@ const page = () => {
   return (
     <div className='bg-[#cbc5e4]'>
       <ViewOutreach/>
+      
     </div>
   )
 }

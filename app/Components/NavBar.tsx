@@ -90,14 +90,14 @@ const Navbar = () => {
             : "bg-[#2222226d]"
         }`}
       >
-        <div className="size-40">
+        <div className="w-[70px] h-[5px]">
           <Image
             src={pic}
             alt="logo"
             onClick={() => router.push("/login")}
             height={800}
             width={800}
-            className="xs:w-[100%] cursor-pointer md:h- lg:h-14 sm:max-w-[70%] md:max-w-[90%] lg:max-w-[80%] xl:max-w-[50%] mt-3 h-14 ml-5"
+            className=" cursor-pointer  mt-3 h-14 "
           />
         </div>
         <div>
@@ -170,7 +170,7 @@ const Navbar = () => {
             <div className="sm:w-0 sm:h-0 flex items-center">
               <BiMenu
                 onClick={() => setIsOpen(!isOpen)}
-                className={`sm:w-0 sm:h-0 text-3xl mt-3 active:transform
+                className={`sm:w-0 sm:h-0 text-3xl  active:transform
                   ${
                     path !== "/"
                     ? 
