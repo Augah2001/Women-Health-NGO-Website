@@ -47,7 +47,7 @@ const ResearchCard = ({ research, onEdit, onDelete, setResearch }: Props) => {
 
   return (
     <motion.div
-      className="bg-gray-700 h-full flex flex-col justify-between transition-colors duration-300"
+      className="bg-gray-700 rounded-lg h-full flex flex-col justify-between transition-colors duration-300"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "0px 0px -50px 0px" }}
@@ -55,7 +55,7 @@ const ResearchCard = ({ research, onEdit, onDelete, setResearch }: Props) => {
     >
       {blobUrl && (
         <Image
-          className="w-full object-cover"
+          className="w-full object-cover rounded-lg"
           src={blobUrl}
           width={1000}
           height={1000}

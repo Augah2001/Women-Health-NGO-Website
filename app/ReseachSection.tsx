@@ -26,7 +26,7 @@ const ResearchSection = () => {
 
       {/* Research Grid */}
       {loading ? (
-        <p className="text-center text-gray-300">Loading research papers...</p>
+        <p className="text-center text-[#faf6d2]">Loading research papers...</p>
       ) : error ? (
         <p className="text-center text-red-500">Error loading research.</p>
       ) : (
@@ -55,8 +55,8 @@ const ResearchSection = () => {
               <div className="p-4">
                 <h2 className="text-2xl text-[#D4AF37] font-bold mb-2">{item.title}</h2>
                 
-                <p className="text-xs text-gray-400">Author: {item.author}</p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-[#faf6d2]">Author: {item.author}</p>
+                <p className="text-xs text-[#faf6d2]">
                   Publication Date: {new Date(item.publicationDate).toLocaleDateString()}
                 </p>
               </div>

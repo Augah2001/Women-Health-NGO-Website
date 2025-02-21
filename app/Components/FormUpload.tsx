@@ -44,7 +44,7 @@ const FormTextInput = ({ id, label, type, onChange, errors, multiple }: Props) =
                       Choose File
                   </button>
                   <span className=" text-[#f9f9f9] border border-gray-300 rounded-r py-2 px-3  leading-tight">
-                      {fileNames.length > 0 ? fileNames.join(", ") : "No file chosen"}
+                      {fileNames.length > 0 ? 'file(s) selected': "No file chosen"}
                   </span>
               </div>
           </div>

@@ -46,7 +46,7 @@ const View = () => {
 
       <motion.div initial="hidden" whileInView="visible" variants={itemVariants} viewport={{ once: true }}>
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl border-b-4 pb-3 inline-block border-[#D4AF37] text-[#D4AF37]">
+          <h2 className="text-4xl justify-center flex mx-auto font-bold pb-3  border-[#D4AF37] text-[#D4AF37]">
             News & Updates
           </h2>
           {user && (
@@ -68,7 +68,7 @@ const View = () => {
         {loading && (
           <ChakraProvider>
             <div className="flex justify-center mt-5">
-              <Spinner aria-busy color="#D4AF37" />
+              <Spinner size={'xl'} aria-busy color="#D4AF37" />
             </div>
           </ChakraProvider>
         )}

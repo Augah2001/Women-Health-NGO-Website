@@ -233,14 +233,11 @@ const OutreachForm = ({
         ) => (
           <div>
             <div
-              className=" text-2xl text-[#0c361d] flex justify-end "
+              className=" text-2xl text-yellow-400 flex justify-end "
               onClick={onClose}
             >
               <BiX />
             </div>
-            <h1 className="text-[#D4AF37]  text-4xl font-normal mb-4">
-              Peer Outreach
-            </h1>
             <div className="">
               <div className="md:flex gap-4">
                 <div className="md:w-[40%]">

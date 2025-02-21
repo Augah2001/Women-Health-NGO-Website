@@ -95,9 +95,9 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          onClick={() => router.push("/news")}
+          onClick={() => router.push("/outreach")}
         >
-          <h2 className="text-xl text-[#D4AF37] font-bold">Peer Outreach</h2>
+          <h2 className="text-xl text-[#D4AF37] font-bold">Outreach</h2>
           <p className="text-sm text-[#f1ebd7] mt-3 leading-relaxed">
           Engage in peer outreach programs focused on education, prevention, and support for communities impacted by challenges related to sexual reproductive rights, harm reduction, and women's health in Zimbabwe.
           </p>

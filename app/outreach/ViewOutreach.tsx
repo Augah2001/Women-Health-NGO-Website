@@ -31,19 +31,43 @@ const ViewOutreach = () => {
 
       {/* Modal */}
       {showModal && (
-        <div onClick={() => setShowModal(false)} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div onClick={(e) => e.stopPropagation()} className="bg-gray-700 rounded-lg shadow-lg w-[90%] md:w-[50%] p-6">
-            <OutreachForm outreachItems={outreachItems} setOutreachItems={setOutreachData} id={selectedItemId?.toString()} onClose={() => setShowModal(false)} />
+        <div
+          onClick={() => setShowModal(false)}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-auto"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-gray-700 rounded-lg shadow-lg w-[90%] md:w-[50%] p-6 max-h-[90vh] overflow-y-auto"
+          >
+            <OutreachForm
+              outreachItems={outreachItems}
+              setOutreachItems={setOutreachData}
+              id={selectedItemId?.toString()}
+              onClose={() => setShowModal(false)}
+            />
           </div>
         </div>
       )}
 
       {/* Header */}
-      <motion.div className="flex justify-between items-center mb-10" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-        <h1 className="text-3xl font-bold text-yellow-400">Peer Outreach</h1>
+      <motion.div
+        className="flex justify-between items-center mb-10"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-4xl font-bold flex mx-auto mt-10 mb-5 text-yellow-400">
+          Outreach
+        </h1>
         {user && (
-          <button  className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300" onClick={() => { setSelectedItemId(undefined); setShowModal(true); }}>
-            <BiPlusCircle className="mr-2 text-xl" /> Add 
+          <button
+            className="flex items-center px-3 py-2 rounded-md bg-[#D4AF37] text-[#222222] hover:bg-[#D47800] transition-all duration-300"
+            onClick={() => {
+              setSelectedItemId(undefined);
+              setShowModal(true);
+            }}
+          >
+            <BiPlusCircle className="mr-2 text-xl" /> Add
           </button>
         )}
       </motion.div>
@@ -64,31 +88,59 @@ const ViewOutreach = () => {
       )}
 
       {outreachItems?.length === 0 && !loading && (
-        <div className="text-gray-400 text-center py-10">No Outreach Data Available</div>
+        <div className="text-gray-400 text-center py-10">
+          No Outreach Data Available
+        </div>
       )}
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {outreachItems?.map((o) => (
-          <div key={o.id} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div
+            key={o.id}
+            className="bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+          >
             <div className="p-4 border-b border-gray-700 flex justify-between items-center">
               <span className="text-yellow-400 font-semibold">{`${o.From.toString().substring(0, 10)} - ${o.To.toString().substring(0, 10)}`}</span>
               {user && (
                 <ChakraProvider>
                   <div className="flex space-x-2">
-                    <IconButton  aria-label="Edit"
-                                    icon={<EditIcon />}
-                                    size="sm"
-                                    variant="outline"
-                                    borderColor="#D4AF37"
-                                    color="#D4AF37"
-                                    _hover={{ bg: "transparent", color: "#D4AF37", borderColor: "#D4AF37" }} onClick={() => { setSelectedItemId(o.id); setShowModal(true); }} />
-                    <IconButton aria-label="Delete"
-                icon={<DeleteIcon />}
-                size="sm"
-                variant="outline"
-                borderColor="#D4AF37"
-                colorScheme="red"
-                _hover={{ bg: "transparent", color: "#D4AF37", borderColor: "#D4AF37" }} onClick={() => handleDelete("/outreach", { id: o.id, images: o.images }, setOutreachData)} />
+                    <IconButton
+                      aria-label="Edit"
+                      icon={<EditIcon />}
+                      size="sm"
+                      variant="outline"
+                      borderColor="#D4AF37"
+                      color="#D4AF37"
+                      _hover={{
+                        bg: "transparent",
+                        color: "#D4AF37",
+                        borderColor: "#D4AF37",
+                      }}
+                      onClick={() => {
+                        setSelectedItemId(o.id);
+                        setShowModal(true);
+                      }}
+                    />
+                    <IconButton
+                      aria-label="Delete"
+                      icon={<DeleteIcon />}
+                      size="sm"
+                      variant="outline"
+                      borderColor="#D4AF37"
+                      colorScheme="red"
+                      _hover={{
+                        bg: "transparent",
+                        color: "#D4AF37",
+                        borderColor: "#D4AF37",
+                      }}
+                      onClick={() =>
+                        handleDelete(
+                          "/outreach",
+                          { id: o.id, images: o.images },
+                          setOutreachData
+                        )
+                      }
+                    />
                   </div>
                 </ChakraProvider>
               )}
@@ -97,7 +149,12 @@ const ViewOutreach = () => {
               <h2 className="text-lg font-bold text-yellow-300">{o.theme}</h2>
               <p className="text-sm text-gray-300">📍 {o.location}</p>
               <p className="mt-2 text-sm text-gray-400">{o.description}</p>
-              <button onClick={() => router.push(`/outreach/${o.id}`)} className="mt-4 w-full py-2 bg-yellow-500 text-black rounded-md hover:bg-yellow-400 transition">More Details</button>
+              <button
+                onClick={() => router.push(`/outreach/${o.id}`)}
+                className="mt-4 w-full py-2 bg-yellow-500 text-black rounded-md hover:bg-yellow-400 transition"
+              >
+                More Details
+              </button>
             </div>
             <OutreachCarousel images={o.images} />
           </div>

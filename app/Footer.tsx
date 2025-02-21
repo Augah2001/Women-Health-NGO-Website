@@ -32,7 +32,7 @@ const Footer = () => {
           {/* About Section */}
           <div className="text-center">
             <h2 className="text-xl text-center text-[#D4AF37] font-bold mb-4">About Us</h2>
-            <p className="text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed text-[#fbf7da] ">
             Sexual Reproductive Rights & Harm Reduction Observatory is committed to advancing sexual reproductive rights, harm reduction, and women's health in Zimbabwe. Our mission is to empower communities with knowledge and to advocate for equitable policies that support change.
 
 
@@ -49,31 +49,31 @@ const Footer = () => {
             <h2 className="text-xl text-center text-[#D4AF37] font-bold mb-4">Quick Links</h2>
             <ul className="space-y-2 text-sm text-center">
               <li
-                className="hover:text-white cursor-pointer"
+                className="hover:text-white text-[#faf6d2] cursor-pointer"
                 onClick={() => router.push("/")}
               >
                 Home
               </li>
               <li
-                className="hover:text-white cursor-pointer"
+                className="hover:text-white text-[#faf6d2] cursor-pointer"
                 onClick={() => router.push("/about")}
               >
                 About
               </li>
               <li
-                className="hover:text-white cursor-pointer"
+                className="hover:text-white text-[#faf6d2] cursor-pointer"
                 onClick={() => router.push("/research")}
               >
                 Research
               </li>
               <li
-                className="hover:text-white cursor-pointer"
+                className="hover:text-white text-[#faf6d2] cursor-pointer"
                 onClick={() => router.push("/news")}
               >
                 News
               </li>
               <li
-                className="hover:text-white cursor-pointer"
+                className="hover:text-white text-[#faf6d2] cursor-pointer"
                 onClick={() => router.push("/contact")}
               >
                 Contact
@@ -83,35 +83,13 @@ const Footer = () => {
           {/* Contact Section */}
           <div>
             <h2 className="text-xl text-center text-[#D4AF37] font-bold mb-4">Contact Us</h2>
-            <address className="not-italic text-center text-sm">
+            <address className="not-italic text-[#faf6d2] text-center text-sm">
               316 Furze Road <br />
               ParkTown, WaterFalls <br />
               Harare <br />
               Phone: 0777056475
             </address>
-            <div className="flex justify-center text-center space-x-4 mt-4">
-              <a
-                href="https://x.com/CivilDrug"
-                aria-label="Twitter"
-                className="hover:text-[#D4AF37] transition duration-300"
-              >
-                <FaTwitter className="text-2xl" />
-              </a>
-              <a
-                href="https://www.facebook.com/ZIMCLDN/"
-                aria-label="Facebook"
-                className="hover:text-[#D4AF37] transition duration-300"
-              >
-                <FaFacebook className="text-2xl" />
-              </a>
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="hover:text-[#D4AF37] transition duration-300"
-              >
-                <FaYoutube className="text-2xl" />
-              </a>
-            </div>
+            
           </div>
         </div>
       </div>
