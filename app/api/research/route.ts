@@ -47,7 +47,7 @@ export async function GET(req: NextRequest) {
 
     // Determine if there are more items to load
     const hasMore = totalCount > page * limit;
-
+    console.log(allResearch)
     // Return paginated results along with metadata
     return NextResponse.json(
       {
@@ -57,6 +57,8 @@ export async function GET(req: NextRequest) {
       },
       { status: 200 }
     );
+
+    
   } catch (error) {
     console.log("Error fetching research:", error);
     return NextResponse.json(
